@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHINE BOYS' PG · Garchuk, Guwahati</title>
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..800;1,14..32,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* RESET & VARIABLES – clean & minimal */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    :root {
+      --primary: #1e3a5f;        /* deep navy */
+      --secondary: #f4b740;       /* golden */
+      --accent: #2b9c7c;          /* teal */
+      --bg-light: #ffffff;         /* pure white background */
+      --card-bg: #ffffff;          /* white cards */
+      --text-dark: #2c3e4e;
+      --text-light: #5e6f7e;
+      --border-light: #eaeef2;     /* very soft border */
+      --shadow: 0 10px 25px -8px rgba(0,0,0,0.1);
+      --transition: all 0.2s ease;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ----- HEADER (sticky, friendly) ----- */
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 0.7rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .logo-icon {
+      background: var(--secondary);
+      color: var(--primary);
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+    .logo-text h1 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .logo-text p {
+      font-size: 0.8rem;
+      opacity: 0.9;
+      font-style: italic;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      transition: var(--transition);
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover {
+      background: rgba(255,255,255,0.15);
+    }
+    .nav-links .book-now-nav {
+      background: var(--secondary);
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .mobile-menu, .mobile-menu-close {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    /* ----- HERO (clean overlay, attractive) ----- */
+    .hero {
+      background: linear-gradient(120deg, rgba(30,58,95,0.8), rgba(30,58,95,0.7)), 
+                  url('https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center 25%;
+      color: white;
+      padding: 6rem 0 8rem;
+    }
+    .hero-content {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .hero h2 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .hero p {
+      font-size: 1.3rem;
+      margin: 1.5rem 0 2rem;
+      opacity: 0.95;
+    }
+    .cta-button {
+      display: inline-block;
+      background: var(--secondary);
+      color: var(--primary);
+      font-weight: 700;
+      padding: 1rem 2.8rem;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      text-decoration: none;
+      box-shadow: 0 8px 18px rgba(244,183,64,0.3);
+      transition: var(--transition);
+      border: none;
+    }
+    .cta-button:hover {
+      background: white;
+      color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 22px rgba(0,0,0,0.15);
+    }
+
+    /* ----- SECTION TITLES (simple) ----- */
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section-title h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.3rem;
+    }
+    .section-title p {
+      font-size: 1.2rem;
+      color: var(--text-light);
+    }
+
+    /* ----- ROOMS – colorful, vibrant, with photos ----- */
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    .room-card {
+      border-radius: 30px;
+      padding: 1.8rem 1.2rem 1.8rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      background: white;
+    }
+    /* distinct gradient backgrounds */
+    .room-card:nth-child(1) {
+      background: linear-gradient(145deg, #fff5f0, #ffffff, #ffe8e0);
+      border: 1px solid #ffcdb6;
+    }
+    .room-card:nth-child(2) {
+      background: linear-gradient(145deg, #f0f5ff, #ffffff, #e0edff);
+      border: 1px solid #b8d1ff;
+    }
+    .room-card:nth-child(3) {
+      background: linear-gradient(145deg, #f0fff2, #ffffff, #dcf5e0);
+      border: 1px solid #a8e0b5;
+    }
+    .room-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: linear-gradient(90deg, var(--secondary), var(--accent), var(--primary));
+    }
+    .room-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 35px -12px rgba(0,0,0,0.25);
+    }
+    .room-img {
+      height: 190px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 20px;
+      margin-bottom: 1.2rem;
+      border: 3px solid white;
+      box-shadow: 0 8px 18px -6px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .room-card:hover .room-img {
+      transform: scale(1.02);
+    }
+    /* attractive unsplash images */
+    .room-card:nth-child(1) .room-img {
+      background-image: url('https://images.unsplash.com/photo-1630699144867-37acec97df5a?auto=format&fit=crop&w=800&q=80');
+    }
+    .room-card:nth-child(2) .room-img {
+      background-image: url('https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80');
+    }
+    .room-card:nth-child(3) .room-img {
+      background-image: url('https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=800&q=80');
+    }
+    .room-type {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 0 rgba(244,183,64,0.2);
+    }
+    .room-price {
+      background: linear-gradient(135deg, var(--primary), #2b4b7a);
+      padding: 0.8rem 1.2rem;
+      border-radius: 40px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+      color: white;
+      font-weight: 600;
+      box-shadow: 0 6px 14px rgba(30,58,95,0.4);
+    }
+    .price-line span {
+      color: var(--secondary);
+      font-weight: 700;
+      margin-right: 0.3rem;
+    }
+    .room-features {
+      list-style: none;
+      margin-bottom: 1.8rem;
+    }
+    .room-features li {
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      border-bottom: 1px dashed rgba(0,0,0,0.1);
+      font-weight: 500;
+    }
+    .room-features i {
+      font-size: 1.2rem;
+      width: 2rem;
+      height: 2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    .room-card:nth-child(1) .room-features i { background: #ffe3d0; color: #d45a2e; }
+    .room-card:nth-child(2) .room-features i { background: #d0e0ff; color: #1e5bbf; }
+    .room-card:nth-child(3) .room-features i { background: #d0f0da; color: #1f7b4d; }
+    .book-room-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 40px;
+      padding: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: auto;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 8px 16px -6px var(--primary);
+    }
+    .book-room-btn:hover {
+      background: var(--secondary);
+      color: var(--primary);
+      transform: scale(1.02);
+      box-shadow: 0 12px 20px -8px var(--secondary);
+    }
+    .room-note {
+      background: linear-gradient(145deg, #f8fafc, #eef2f6);
+      padding: 1.8rem;
+      border-radius: 40px;
+      text-align: center;
+      border-left: 8px solid var(--secondary);
+      margin-top: 2rem;
+      font-weight: 500;
+      box-shadow: var(--shadow);
+    }
+
+    /* ----- GALLERY (clean, filterable) ----- */
+    .gallery-wrapper {
+      background: white;
+      border-radius: 30px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+    .gallery-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .filter-btn {
+      padding: 0.5rem 1.8rem;
+      background: white;
+      border: 1px solid var(--border-light);
+      border-radius: 40px;
+      font-weight: 500;
+      color: var(--text-dark);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .gallery-item {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 18px -8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      aspect-ratio: 4/3;
+      position: relative;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.3s;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(30,58,95,0.8));
+      color: white;
+      padding: 1rem;
+      transform: translateY(100%);
+      transition: 0.3s;
+    }
+    .gallery-item:hover .gallery-caption {
+      transform: translateY(0);
+    }
+    .gallery-category {
+      background: var(--secondary);
+      color: var(--primary);
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.75rem;
+      display: inline-block;
+      margin-bottom: 0.3rem;
+    }
+
+    /* ----- MENU (clean cards) ----- */
+    .menu-container {
+      background: white;
+      border-radius: 30px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+    }
+    .menu-day {
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 1rem;
+    }
+    .day-title {
+      font-size: 1.8rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .menu-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .menu-item {
+      background: #f8fafc;
+      padding: 1rem 1.5rem;
+      border-radius: 40px;
+      font-weight: 500;
+      border-left: 5px solid var(--accent);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    .menu-item strong {
+      color: var(--primary);
+      display: block;
+    }
+
+    /* ----- FACILITIES (simple icons) ----- */
+    .facilities-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .facility-item {
+      background: white;
+      padding: 2rem 1.2rem;
+      border-radius: 30px;
+      text-align: center;
+      flex: 1 1 160px;
+      max-width: 200px;
+      box-shadow: var(--shadow);
+      transition: 0.2s;
+      border: 1px solid var(--border-light);
+    }
+    .facility-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 25px -10px rgba(0,0,0,0.15);
+    }
+    .facility-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 2rem;
+      background: var(--primary);
+      color: white;
+    }
+
+    /* ----- INQUIRY (WhatsApp form) ----- */
+    .inquiry-card {
+      background: white;
+      border-radius: 30px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+      max-width: 750px;
+      margin: 0 auto;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .full-width {
+      grid-column: span 2;
+    }
+    label {
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.3rem;
+      display: block;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--border-light);
+      border-radius: 40px;
+      font-size: 1rem;
+      background: white;
+      transition: 0.2s;
+    }
+    textarea {
+      border-radius: 25px;
+      resize: vertical;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 3px rgba(244,183,64,0.15);
+    }
+    .inquiry-btn {
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.2s;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+    }
+    .inquiry-btn:hover {
+      background: #20b859;
+      transform: scale(1.01);
+    }
+
+    /* ----- CONTACT & LOCATION (with live map) ----- */
+    .contact-location {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      background: white;
+      border-radius: 30px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+    }
+    .contact-item {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      align-items: flex-start;
+    }
+    .contact-icon {
+      background: var(--primary);
+      color: white;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .map-frame {
+      width: 100%;
+      height: 100%;
+      min-height: 260px;
+      border-radius: 20px;
+      border: none;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+    }
+    .direction-btn {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 40px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    .direction-btn:hover {
+      background: var(--secondary);
+      color: var(--primary);
+    }
+
+    /* ----- FOOTER with designer credit ----- */
+    footer {
+      background: #152a3e;
+      color: #cbd5e1;
+      padding: 3rem 0 1.5rem;
+      margin-top: 4rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+    }
+    .footer-col h3 {
+      color: white;
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+    }
+    .footer-links {
+      list-style: none;
+    }
+    .footer-links li {
+      margin-bottom: 0.7rem;
+    }
+    .footer-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+    }
+    .footer-links a:hover {
+      color: var(--secondary);
+    }
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #2d4a6e;
+      margin-top: 2rem;
+      font-size: 0.95rem;
+    }
+    .copyright a {
+      color: var(--secondary);
+      text-decoration: none;
+    }
+
+    /* ----- whatsapp float ----- */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      box-shadow: 0 6px 16px rgba(37,211,102,0.3);
+      z-index: 99;
+      transition: 0.2s;
+      text-decoration: none;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background: #20b859;
+    }
+
+    /* ----- responsive ----- */
+    @media (max-width: 768px) {
+      .mobile-menu { display: block; }
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 260px;
+        height: 100vh;
+        background: var(--primary);
+        flex-direction: column;
+        padding: 5rem 2rem;
+        transition: right 0.3s ease;
+        z-index: 1001;
+        display: flex;
+      }
+      .nav-links.mobile-open { right: 0; }
+      .mobile-menu-close { display: block; position: absolute; top: 20px; right: 20px; font-size: 2rem; }
+      .hero h2 { font-size: 2.4rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .full-width { grid-column: span 1; }
+      .contact-location { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 769px) {
+      .mobile-menu-close, .mobile-menu { display: none !important; }
+      .nav-links { display: flex !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- WhatsApp sticky -->
+  <a href="https://wa.me/918638647969?text=Hello%20SHINE%20BOYS%20PG%2C%20I%20have%20a%20query" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <div class="logo-icon"><i class="fas fa-house-chimney"></i></div>
+          <div class="logo-text">
+            <h1>SHINE BOYS' PG</h1>
+            <p><i class="fas fa-map-pin"></i> Rajendra Path, Garchuk · 781035</p>
+          </div>
+        </div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#facilities">Facilities</a></li>
+          <li><a href="#inquiry">Inquiry</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="Booking.html" class="book-now-nav">BOOK NOW</a></li>
+          <div class="mobile-menu-close" id="mobileMenuClose"><i class="fas fa-times"></i></div>
+        </ul>
+        <div class="mobile-menu" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero (button now says "Book Your Room Today") -->
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <h2>Welcome to SHINE BOYS' PG</h2>
+      <p>Safe, modern & homely stay for students in Garchuk. High‑speed Wi‑Fi, nutritious meals, 24/7 security.</p>
+      <a href="Booking.html" class="cta-button">Book Your Room Today</a>
+    </div>
+  </section>
+
+  <!-- Rooms – colorful, with attractive photos and all details -->
+  <section id="rooms" style="padding: 4rem 0;">
+    <div class="container">
+      <div class="section-title">
+        <h2>Rooms & pricing</h2>
+        <p>choose your comfort zone</p>
+      </div>
+      <div class="rooms-grid">
+        <!-- Single room -->
+        <div class="room-card">
+          <div class=""></div>
+          <h3 class="room-type">Single room</h3>
+          <div class="room-price">
+            <span class="price-line"><span>A/C</span> ₹16,000</span>
+            <span class="price-line"><span>Non‑A/C</span> ₹12,000</span>
+          </div>
+          <ul class="room-features">
+            <li><i class="fas fa-check-circle"></i> Attached bathroom</li>
+            <li><i class="fas fa-check-circle"></i> Study table & chair</li>
+            <li><i class="fas fa-check-circle"></i> Wardrobe + personal space</li>
+            <li><i class="fas fa-check-circle"></i> Power backup 24/7</li>
+          </ul>
+          <button class="book-room-btn" onclick="window.location.href='Booking.html'">Book single</button>
+        </div>
+        <!-- Double sharing -->
+        <div class="room-card">
+          <div class=""></div>
+          <h3 class="room-type">Double sharing</h3>
+          <div class="room-price">
+            <span class="price-line"><span>A/C</span> ₹14,000</span>
+            <span class="price-line"><span>Non‑A/C</span> ₹9,000</span>
+          </div>
+          <ul class="room-features">
+            <li><i class="fas fa-check-circle"></i> Attached bathroom</li>
+            <li><i class="fas fa-check-circle"></i> 2 study tables & wardrobes</li>
+            <li><i class="fas fa-check-circle"></i> Cost‑effective buddy stay</li>
+            <li><i class="fas fa-check-circle"></i> Power backup 24/7</li>
+          </ul>
+          <button class="book-room-btn" onclick="window.location.href='Booking.html'">Book double</button>
+        </div>
+        <!-- Triple sharing -->
+        <div class="room-card">
+          <div class=""></div>
+          <h3 class="room-type">Triple sharing</h3>
+          <div class="room-price">
+            <span class="price-line"><span>A/C</span> ₹12,000</span>
+            <span class="price-line"><span>Non‑A/C</span> ₹8,000</span>
+          </div>
+          <ul class="room-features">
+            <li><i class="fas fa-check-circle"></i> Attached bathroom</li>
+            <li><i class="fas fa-check-circle"></i> 3 study tables & wardrobes</li>
+            <li><i class="fas fa-check-circle"></i> Most affordable</li>
+            <li><i class="fas fa-check-circle"></i> Power backup 24/7</li>
+          </ul>
+          <button class="book-room-btn" onclick="window.location.href='Booking.html'">Book triple</button>
+        </div>
+      </div>
+      <div class="room-note">
+        <p><strong>✨ inclusive:</strong> Wi‑Fi, housekeeping, 3 meals/day. Refundable security deposit (2 months) + ₹1,000 admission fee.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" style="padding: 4rem 0; background: #f9fafc;">
+    <div class="container">
+      <div class="section-title">
+        <h2>PG gallery</h2>
+        <p>see your future home</p>
+      </div>
+      <div class="gallery-wrapper">
+        <div class="gallery-filter">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="single">Single</button>
+          <button class="filter-btn" data-filter="double">Double</button>
+          <button class="filter-btn" data-filter="triple">Triple</button>
+          <button class="filter-btn" data-filter="facilities">Facilities</button>
+          <button class="filter-btn" data-filter="common">Common</button>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item" data-category="single"><img src="extraa-shine- single.jpeg" alt="single"><div class="gallery-caption"><span class="gallery-category">Single</span><div class="gallery-title">Spacious single</div></div></div>
+          <div class="gallery-item" data-category="double"><img src="extraa-shine-double.jpeg" alt="double"><div class="gallery-caption"><span class="gallery-category">Double</span><div class="gallery-title">Double sharing</div></div></div>
+          <div class="gallery-item" data-category="triple"><img src="extraa-shine-triple.jpeg" alt="triple"><div class="gallery-caption"><span class="gallery-category">Triple</span><div class="gallery-title">Triple sharing</div></div></div>
+          <div class="gallery-item" data-category="facilities"><img src="messshinepg1.jpeg" alt="dining"><div class="gallery-caption"><span class="gallery-category">Facilities</span><div class="gallery-title">Dining hall</div></div></div>
+          <div class="gallery-item" data-category="common"><img src="extraa-shine-entrance.jpeg" alt="entrance"><div class="gallery-caption"><span class="gallery-category">Common</span><div class="gallery-title">PG entrance</div></div></div>
+          <div class="gallery-item" data-category="common"><img src="IMG_20260125_131741.jpg.jpeg" alt="self cooking"><div class="gallery-caption"><span class="gallery-category">Common</span><div class="gallery-title">Self cooking area</div></div></div>
+          <div class="gallery-item" data-category="common"><img src="corridorshinepg1.jpeg" alt="corridor"><div class="gallery-caption"><span class="gallery-category">Common</span><div class="gallery-title">Clean corridors</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu (improved) -->
+  <section id="menu" style="padding: 4rem 0;">
+    <div class="container">
+      <div class="section-title">
+        <h2>Weekly food menu</h2>
+        <p>fresh & wholesome meals</p>
+      </div>
+      <div class="menu-container">
+        <div class="menu-day"><h3 class="day-title"><i class="fas fa-sun"></i> MONDAY & FRIDAY</h3><div class="menu-items"><div class="menu-item"><strong>Breakfast</strong> BREAKFAST</div><div class="menu-item"><strong>Lunch</strong> VEG</div><div class="menu-item"><strong>Dinner</strong> EGG</div></div></div>
+        <div class="menu-day"><h3 class="day-title"><i class="fas fa-sun"></i> TUESDAY</h3><div class="menu-items"><div class="menu-item"><strong>Breakfast</strong> BREAKFAST</div><div class="menu-item"><strong>Lunch</strong>  VEG</div><div class="menu-item"><strong>Dinner</strong> VEG</div></div></div>
+        <div class="menu-day"><h3 class="day-title"><i class="fas fa-sun"></i> WEDNESDAY & SATURDAY</h3><div class="menu-items"><div class="menu-item"><strong>Breakfast</strong> BREAKFAST</div><div class="menu-item"><strong>Lunch</strong>  VEG</div><div class="menu-item"><strong>Dinner</strong> CHICKEN</div></div></div>
+        <div class="menu-day"><h3 class="day-title"><i class="fas fa-sun"></i> THURSDAY</h3><div class="menu-items"><div class="menu-item"><strong>Breakfast</strong> BREAKFAST</div><div class="menu-item"><strong>Lunch</strong>  VEG</div><div class="menu-item"><strong>Dinner</strong> FISH</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Facilities -->
+  <section id="facilities" style="padding: 4rem 0; background: #f9fafc;">
+    <div class="container">
+      <div class="section-title">
+        <h2>Why shine?</h2>
+        <p>facilities that matter</p>
+      </div>
+      <div class="facilities-grid">
+        <div class="facility-item"><div class="facility-icon"><i class="fas fa-wifi"></i></div><h3>High‑speed Wi‑Fi</h3><p>unlimited, fibre</p></div>
+        <div class="facility-item"><div class="facility-icon"><i class="fas fa-bolt"></i></div><h3>24/7 power backup</h3><p>inverter & generator</p></div>
+        <div class="facility-item"><div class="facility-icon"><i class="fas fa-tint"></i></div><h3>Hot & cold water</h3><p>24/7 supply</p></div>
+        <div class="facility-item"><div class="facility-icon"><i class="fas fa-shield-alt"></i></div><h3>CCTV security</h3><p>round the clock</p></div>
+        <div class="facility-item"><div class="facility-icon"><i class="fas fa-book-reader"></i></div><h3>Dedicated study room</h3><p>quiet & well lit</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inquiry (WhatsApp) -->
+  <section id="inquiry" style="padding: 4rem 0;">
+    <div class="container">
+      <div class="section-title">
+        <h2>Quick Inquiry</h2>
+        <p>Send your questions directly on WhatsApp</p>
+      </div>
+      <div class="inquiry-card">
+        <form id="whatsappForm">
+          <div class="form-row">
+            <div class="form-group"><label for="name">Your Name *</label><input type="text" id="name" placeholder="e.g. Rahul Das" required></div>
+            <div class="form-group"><label for="phone">Phone Number *</label><input type="tel" id="phone" placeholder="+91 98765 43210" required></div>
+            <div class="form-group full-width"><label for="roomType">Interested in</label><select id="roomType"><option value="Single A/C">Single A/C</option><option value="Single Non-A/C">Single Non-A/C</option><option value="Double A/C">Double A/C</option><option value="Double Non-A/C">Double Non-A/C</option><option value="Triple A/C">Triple A/C</option><option value="Triple Non-A/C">Triple Non-A/C</option><option value="Not sure">Not sure / just inquiry</option></select></div>
+            <div class="form-group full-width"><label for="message">Your Message *</label><textarea id="message" rows="3" placeholder="I'd like to know about availability, visit timings..." required></textarea></div>
+          </div>
+          <button type="submit" class="inquiry-btn"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Location (with live Google Map using plus code) -->
+  <section id="contact" style="padding: 4rem 0; background: #f9fafc;">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact & location</h2>
+        <p>we’re here to help</p>
+      </div>
+      <div class="contact-location">
+        <div>
+          <div class="contact-item"><div class="contact-icon"><i class="fas fa-map-pin"></i></div><div><h4>Address</h4><p>SHINE BOYS' PG, Rajendra Path, Garchuk Chariali, near Assam Gramin Vikash Bank, Guwahati – 781035</p><p><strong>Plus code:</strong> 4P94+2X Guwahati, Assam</p></div></div>
+          <div class="contact-item"><div class="contact-icon"><i class="fas fa-phone-alt"></i></div><div><h4>Call / WhatsApp</h4><p><strong>+91 8638647969</strong> (8 AM – 10 PM)</p></div></div>
+          <div class="contact-item"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div><h4>Email</h4><p>shineboyspg@outlook.com</p></div></div>
+          <div class="contact-item"><div class="contact-icon"><i class="fas fa-clock"></i></div><div><h4>Site visit</h4><p>Mon-Sun 10:00AM – 6:00PM · please call ahead</p></div></div>
+          <a href="https://maps.google.com/?q=4P94%2B2X+Guwahati+Assam" target="_blank" class="direction-btn"><i class="fas fa-location-dot"></i> Open Google Maps</a>
+        </div>
+        <iframe class="map-frame" src="https://maps.google.com/maps?q=4P94%2B2X%20Guwahati%2C%20Assam&output=embed" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col"><h3>SHINE BOYS' PG</h3><p>home away from home for students since 2025. safe, modern & friendly.</p><div style="margin-top:1.2rem;"><a href="#" style="color:white; margin-right:1rem;"><i class="fab fa-facebook-f"></i></a><a href="#" style="color:white;"><i class="fab fa-instagram"></i></a></div></div>
+        <div class="footer-col"><h3>Quick links</h3><ul class="footer-links"><li><a href="#home">Home</a></li><li><a href="#rooms">Rooms</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#menu">Menu</a></li><li><a href="#inquiry">Inquiry</a></li><li><a href="Booking.html">Book online</a></li></ul></div>
+        <div class="footer-col"><h3>Reach us</h3><ul class="footer-links"><li><i class="fas fa-map-marker-alt" style="margin-right:8px;"></i> Garchuk, Guwahati</li><li><i class="fas fa-phone"></i> +91 8638647969</li><li><i class="fas fa-envelope"></i> shineboyspg@outlook.com</li><li><i class="fas fa-code"></i> 4P94+2X Guwahati</li></ul></div>
+      </div>
+      <div class="copyright">
+        <p>© 2026 SHINE BOYS' PG All Right Reserved · designed with <i class="fas fa-heart" style="color:#f43f5e;"></i> by <a href="https://mbdevloper.unaux.com" target="_blank">MB Developer</a>  HIRE ME </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // mobile menu
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const closeBtn = document.getElementById('mobileMenuClose');
+      const nav = document.getElementById('navLinks');
+      if (mobileBtn && closeBtn && nav) {
+        mobileBtn.addEventListener('click', () => nav.classList.add('mobile-open'));
+        closeBtn.addEventListener('click', () => nav.classList.remove('mobile-open'));
+        document.addEventListener('click', (e) => {
+          if (window.innerWidth <= 768 && !nav.contains(e.target) && !mobileBtn.contains(e.target) && nav.classList.contains('mobile-open'))
+            nav.classList.remove('mobile-open');
+        });
+      }
+
+      // gallery filter
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const items = document.querySelectorAll('.gallery-item');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.dataset.filter;
+          items.forEach(item => {
+            item.style.display = (filter === 'all' || item.dataset.category === filter) ? 'block' : 'none';
+          });
+        });
+      });
+
+      // smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href === '#') return;
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            if (nav.classList.contains('mobile-open')) nav.classList.remove('mobile-open');
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      // WhatsApp form
+      const form = document.getElementById('whatsappForm');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const name = document.getElementById('name').value.trim();
+          const phone = document.getElementById('phone').value.trim();
+          const room = document.getElementById('roomType').value;
+          const message = document.getElementById('message').value.trim();
+          if (!name || !phone || !message) { alert('Please fill all required fields.'); return; }
+          const whatsappMessage = `*New Inquiry from SHINE BOYS' PG Website*%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Interested in:* ${encodeURIComponent(room)}%0A*Message:* ${encodeURIComponent(message)}`;
+          window.open(`https://wa.me/918638647969?text=${whatsappMessage}`, '_blank');
+        });
+      }
+
+      // lightbox for gallery
+      document.querySelectorAll('.gallery-item').forEach(item => {
+        item.addEventListener('click', function() {
+          const img = this.querySelector('img');
+          if (!img) return;
+          const src = img.src;
+          const cat = this.dataset.category;
+          const lightbox = document.createElement('div');
+          lightbox.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); display:flex; justify-content:center; align-items:center; z-index:2000; flex-direction:column; backdrop-filter:blur(8px);';
+          lightbox.innerHTML = `<span style="position:absolute; top:30px; right:40px; font-size:4rem; color:white; cursor:pointer;">&times;</span>
+            <img src="${src}" style="max-width:90%; max-height:75%; border-radius:20px; object-fit:contain;">
+            <div style="color:white; margin-top:1.5rem; background:var(--secondary); padding:0.5rem 2rem; border-radius:40px; font-weight:bold;">${cat}</div>`;
+          document.body.appendChild(lightbox);
+          lightbox.querySelector('span').addEventListener('click', () => lightbox.remove());
+          lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.remove(); });
+        });
+      });
+    })();
+  </script>
+  <!-- Firebase config (kept as original) -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAECCFHz-aJyBOpY32RyTl4cLdmOjrmH5U",
+      authDomain: "shine-boys-pg-website.firebaseapp.com",
+      projectId: "shine-boys-pg-website",
+      storageBucket: "shine-boys-pg-website.firebasestorage.app",
+      messagingSenderId: "137771948553",
+      appId: "1:137771948553:web:931057169ba5247440f6d8"
+    };
+  </script>
+</body>
+</html>

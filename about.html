@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHINE BOY PG - About Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .logo p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .logo-icon {
+            background-color: #fbbc05;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+
+        /* Main Content */
+        main {
+            padding: 40px 0;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-top: 20px;
+        }
+
+        .page-title h1 {
+            color: #1a73e8;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .page-title p {
+            color: #666;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .about-section h2 {
+            color: #1a73e8;
+            margin-bottom: 25px;
+            font-size: 2rem;
+            border-bottom: 3px solid #fbbc05;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* Owner Info */
+        .owner-info {
+            background: linear-gradient(135deg, #e8f0fe, #f5f9ff);
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 30px;
+            border-left: 5px solid #1a73e8;
+        }
+
+        .owner-info h3 {
+            color: #1a73e8;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .owner-info h3 i {
+            color: #fbbc05;
+        }
+
+        .owner-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .owner-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .owner-detail i {
+            color: #34a853;
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+
+        /* Facilities */
+        .facilities-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .facilities-section h2 {
+            color: #1a73e8;
+            margin-bottom: 25px;
+            font-size: 2rem;
+            border-bottom: 3px solid #fbbc05;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .facility-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #34a853;
+            transition: transform 0.3s ease;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .facility-card h4 {
+            color: #1a73e8;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .facility-card h4 i {
+            color: #fbbc05;
+        }
+
+        /* Agreement Section */
+        .agreement-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .agreement-section h2 {
+            color: #1a73e8;
+            margin-bottom: 25px;
+            font-size: 2rem;
+            border-bottom: 3px solid #fbbc05;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .agreement-box {
+            background: #f0f7ff;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 20px;
+            border: 2px dashed #1a73e8;
+        }
+
+        .agreement-box h3 {
+            color: #1a73e8;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .agreement-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .agreement-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .agreement-item h4 {
+            color: #34a853;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Terms & Conditions */
+        .terms-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .terms-section h2 {
+            color: #1a73e8;
+            margin-bottom: 25px;
+            font-size: 2rem;
+            border-bottom: 3px solid #fbbc05;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .terms-content {
+            margin-top: 20px;
+        }
+
+        .term-category {
+            margin-bottom: 30px;
+        }
+
+        .term-category h3 {
+            color: #1a73e8;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .term-category h3 i {
+            color: #fbbc05;
+        }
+
+        .term-list {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .term-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .term-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #34a853;
+            font-weight: bold;
+        }
+
+        /* Contact Info */
+        .contact-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-section h2 {
+            color: #1a73e8;
+            margin-bottom: 25px;
+            font-size: 2rem;
+            border-bottom: 3px solid #fbbc05;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .contact-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: #fbbc05;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #fbbc05;
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image img {
+                height: 300px;
+            }
+            
+            .page-title h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-title h1 {
+                font-size: 2rem;
+            }
+            
+            .page-title p {
+                font-size: 1.1rem;
+            }
+            
+            .about-section,
+            .facilities-section,
+            .agreement-section,
+            .terms-section,
+            .contact-section {
+                padding: 30px;
+            }
+            
+            .facilities-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-title h1 {
+                font-size: 1.8rem;
+            }
+            
+            .page-title p {
+                font-size: 1rem;
+            }
+            
+            .about-section,
+            .facilities-section,
+            .agreement-section,
+            .terms-section,
+            .contact-section {
+                padding: 20px;
+            }
+            
+            .owner-details,
+            .agreement-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .owner-detail {
+                padding: 12px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div>
+                    <h1>SHINE BOY PG</h1>
+                    <p>Garchuk, Guwahati | Since 2026</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Page Title -->
+            <div class="page-title">
+                <h1>About SHINE BOY PG</h1>
+                <p>Your comfortable and safe accommodation in Garchuk, Guwahati. We provide the perfect home away from home for students and working professionals.</p>
+            </div>
+
+            <!-- About Section -->
+            <section class="about-section">
+                <h2>About Our PG</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>SHINE BOY PG, established in 2026, is a premium paying guest accommodation located in the peaceful Garchuk area of Guwahati, Assam. We provide comfortable and affordable living spaces for students and working professionals who seek a safe, clean, and home-like environment.</p>
+                        <p>Our PG is strategically located near educational institutions, commercial centers, and public transportation, making it convenient for residents to commute to their colleges, universities, or workplaces. We understand the needs of young individuals living away from home and strive to create a supportive community.</p>
+                        <p>At SHINE BOY PG, we believe in providing more than just accommodation. We offer a complete living experience with nutritious food, high-speed internet, 24/7 security, and a comfortable environment that helps residents focus on their studies or work while enjoying a balanced lifestyle.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="SHINE BOY PG Building">
+                    </div>
+                </div>
+
+                <!-- Owner Information -->
+                <div class="owner-info">
+                    <h3><i class="fas fa-user-tie"></i> PG Owner Information</h3>
+                    <div class="owner-details">
+                        <div class="owner-detail">
+                            <i class="fas fa-user"></i>
+                            <div>
+                                <strong>Owner Name:</strong><br>
+                                Mr. Ganesh Paul
+                            </div>
+                        </div>
+                        <div class="owner-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Address:</strong><br>
+                                Garchuk Chariali, Rajendra Path,<br>
+                                Near Assam Gramin Vikash Bank,<br>
+                                Guwahati-781035, Assam
+                            </div>
+                        </div>
+                        <div class="owner-detail">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Contact Number:</strong><br>
+                                +91 8638647969
+                            </div>
+                        </div>
+                        <div class="owner-detail">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Business Hours:</strong><br>
+                                Monday - Sunday: 8:00 AM to 9:00 PM
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Facilities Section -->
+            <section class="facilities-section">
+                <h2>Our Facilities</h2>
+                <div class="facilities-grid">
+                    <div class="facility-card">
+                        <h4><i class="fas fa-bed"></i> Accommodation</h4>
+                        <p>Comfortable single, double, and triple sharing rooms with beds, mattresses, study tables, chairs, and wardrobes. All rooms are well-ventilated and have proper lighting.</p>
+                    </div>
+                    
+                    <div class="facility-card">
+                        <h4><i class="fas fa-wifi"></i> High-Speed Internet</h4>
+                        <p>Unlimited high-speed Wi-Fi connectivity for all residents. Perfect for online classes, research work, and entertainment needs.</p>
+                    </div>
+                    
+                    <div class="facility-card">
+                        <h4><i class="fas fa-utensils"></i> Food Services</h4>
+                        <p>Hygienic and nutritious home-style meals served three times a day. Special meals on weekends and festival days.</p>
+                    </div>
+                    
+                    <div class="facility-card">
+                        <h4><i class="fas fa-shield-alt"></i> Security</h4>
+                        <p>24/7 security guard service and CCTV surveillance in common areas. Secure entry/exit system for residents' safety.</p>
+                    </div>
+                    
+                    <div class="facility-card">
+                        <h4><i class="fas fa-bolt"></i> Power Backup</h4>
+                        <p>Uninterrupted power supply with inverter backup. No worries about power cuts affecting your studies or work.</p>
+                    </div>
+                    
+                    <div class="facility-card">
+                        <h4><i class="fas fa-tint"></i> Water Supply</h4>
+                        <p>24/7 water supply with geysers in bathrooms. Both hot and cold water available as per need.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Agreement Section -->
+            <section class="agreement-section">
+                <h2>PG Agreement Details</h2>
+                <p>We maintain a formal and transparent agreement system to ensure clarity and mutual understanding between the PG management and residents.</p>
+                
+                <div class="agreement-box">
+                    <h3>One Year Paying Guest Agreement</h3>
+                    <p>Every resident signs a formal agreement that includes all terms and conditions clearly mentioned. This ensures transparency and avoids any misunderstandings.</p>
+                    
+                    <div class="agreement-details">
+                        <div class="agreement-item">
+                            <h4>Duration</h4>
+                            <p>One year agreement with option for renewal. Starting date and ending date clearly specified.</p>
+                        </div>
+                        
+                        <div class="agreement-item">
+                            <h4>Payment Terms</h4>
+                            <p>Monthly rent due on or before 7th of every month. Security deposit refundable after deducting any dues or damages.</p>
+                        </div>
+                        
+                        <div class="agreement-item">
+                            <h4>Facilities Included</h4>
+                            <p>Furnished room, electricity, water, Wi-Fi, and meals as per schedule. All included in the rent package.</p>
+                        </div>
+                        
+                        <div class="agreement-item">
+                            <h4>Rules & Regulations</h4>
+                            <p>Clear guidelines about visitor policies, entry timings, maintenance of discipline, and cleanliness standards.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Terms & Conditions -->
+            <section class="terms-section">
+                <h2>Terms & Conditions</h2>
+                <div class="terms-content">
+                    <div class="term-category">
+                        <h3><i class="fas fa-clipboard-check"></i> General Rules</h3>
+                        <ul class="term-list">
+                            <li>Visitors are not allowed inside rooms - meetings must be in common areas with prior permission</li>
+                            <li>Residents must maintain cleanliness and hygiene in rooms and common areas</li>
+                            <li>No loud music, parties, or activities that disturb other residents</li>
+                            <li>Strictly no smoking, alcohol, or drugs/gutkha inside PG premises</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="term-category">
+                        <h3><i class="fas fa-money-check-alt"></i> Rent & Payment</h3>
+                        <ul class="term-list">
+                            <li>Monthly rent must be paid in advance before the 7th of every month</li>
+                            <li>Security deposit is refundable when leaving, subject to room condition and settlement of dues</li>
+                            <li>Payment modes accepted: Cash, UPI, Bank Transfer</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="term-category">
+                        <h3><i class="fas fa-clock"></i> Timings & Discipline</h3>
+                        <ul class="term-list">
+                            <li>Entry time for residents is 9 PM. Late entry requires prior permission</li>
+                            <li>Absence from PG (overnight trips) must be informed in advance</li>
+                            <li>Misbehavior with staff or other residents will lead to immediate cancellation of stay</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="term-category">
+                        <h3><i class="fas fa-sign-out-alt"></i> Leaving/Vacating PG</h3>
+                        <ul class="term-list">
+                            <li>Two months prior notice (or equivalent rent) required before vacating</li>
+                            <li>Security deposit refunded after deducting any dues or damages</li>
+                            <li>Residents must hand over keys and PG property in good condition</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Information -->
+            <section class="contact-section">
+                <h2>Contact Information</h2>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Address</h3>
+                        <p>SHINE BOY PG<br>
+                        Garchuk Chariali, Rajendra Path<br>
+                        Near Assam Gramin Vikash Bank<br>
+                        Guwahati-781035, Assam</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>Phone Numbers</h3>
+                        <p>Owner: +91 8638647969<br>
+                        Caretaker: +91 9876543210<br>
+                        Available: 8 AM - 9 PM</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email</h3>
+                        <p>info@shineboypg.com<br>
+                        bookings@shineboypg.com<br>
+                        shineboyspg@gmail.com</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SHINE BOY PG</h3>
+                    <p>Providing quality student accommodation in Garchuk, Guwahati since 2026. Our mission is to create a home away from home with safety, comfort, and all essential facilities.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#rooms">Rooms</a></li>
+                        <li><a href="#facilities">Facilities</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Garchuk Chariali, Guwahati, Assam</li>
+                        <li><i class="fas fa-phone-alt" style="margin-right: 10px;"></i> +91 8638647969</li>
+                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> shineboyspg@gmail.com</li>
+                        <li><i class="fas fa-clock" style="margin-right: 10px;"></i> 8:00 AM - 9:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2026 SHINE BOY PG, Garchuk Chariali, Guwahati. All rights reserved. | Designed for Student Accommodation</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script for smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHINE BOY PG - Rooms & Pricing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .logo p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .logo-icon {
+            background-color: #fbbc05;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .book-now-btn {
+            background-color: #fbbc05;
+            color: #202124;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .book-now-btn:hover {
+            background-color: #ffca28;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Rooms Section */
+        .rooms-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h1 {
+            font-size: 2.8rem;
+            color: #1a73e8;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background-color: #fbbc05;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Payment Summary */
+        .payment-summary {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid #34a853;
+        }
+
+        .payment-summary h2 {
+            color: #1a73e8;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .payment-formula {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #34a853;
+        }
+
+        .payment-notes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .payment-note {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #1a73e8;
+        }
+
+        .payment-note h4 {
+            color: #1a73e8;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .payment-note h4 i {
+            color: #fbbc05;
+        }
+
+        /* Room Cards Grid */
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .room-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .room-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .room-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #fbbc05;
+            color: #202124;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            z-index: 2;
+        }
+
+        .room-image {
+            height: 250px;
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .room-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .room-card:hover .room-image img {
+            transform: scale(1.05);
+        }
+
+        .room-type {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .room-type h3 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .room-type .ac-badge {
+            display: inline-block;
+            background: #34a853;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .room-details {
+            padding: 30px;
+        }
+
+        .room-price {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .monthly-price {
+            font-size: 2.5rem;
+            color: #1a73e8;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .price-label {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .room-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .room-features li {
+            padding: 12px 0;
+            border-bottom: 1px dashed #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .room-features li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-name i {
+            color: #fbbc05;
+            width: 20px;
+        }
+
+        .feature-value {
+            font-weight: bold;
+            color: #1a73e8;
+        }
+
+        .room-total {
+            background: #e8f0fe;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .room-total h4 {
+            color: #1a73e8;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .total-amount {
+            font-size: 2rem;
+            color: #34a853;
+            font-weight: bold;
+        }
+
+        .book-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .book-btn:hover {
+            background: linear-gradient(135deg, #0d47a1, #1a73e8);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(26, 115, 232, 0.3);
+        }
+
+        /* Room Comparison */
+        .room-comparison {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .comparison-title {
+            text-align: center;
+            color: #1a73e8;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            color: white;
+            padding: 18px;
+            text-align: left;
+            font-weight: 600;
+            border: none;
+        }
+
+        .comparison-table td {
+            padding: 18px;
+            border-bottom: 1px solid #e0e0e0;
+            text-align: center;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .comparison-table tr:hover {
+            background: #e8f0fe;
+        }
+
+        .available {
+            color: #34a853;
+            font-weight: bold;
+        }
+
+        .not-available {
+            color: #ea4335;
+        }
+
+        /* Booking Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalSlide 0.3s ease;
+        }
+
+        @keyframes modalSlide {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            color: white;
+            padding: 25px;
+            border-radius: 15px 15px 0 0;
+            text-align: center;
+        }
+
+        .modal-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #1a73e8;
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+            outline: none;
+        }
+
+        .modal-footer {
+            padding: 20px 30px;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 14px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #0d47a1, #1a73e8);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(26, 115, 232, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f1f3f4;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: #fbbc05;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #fbbc05;
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .rooms-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .section-title h1 {
+                font-size: 2.3rem;
+            }
+            
+            .room-comparison {
+                padding: 30px;
+            }
+            
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .rooms-section {
+                padding: 60px 0;
+            }
+            
+            .section-title h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title p {
+                font-size: 1.1rem;
+            }
+            
+            .rooms-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .payment-notes {
+                grid-template-columns: 1fr;
+            }
+            
+            .room-image {
+                height: 220px;
+            }
+            
+            .room-comparison {
+                padding: 20px;
+            }
+            
+            .modal-content {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title h1 {
+                font-size: 1.8rem;
+            }
+            
+            .payment-summary {
+                padding: 20px;
+            }
+            
+            .payment-formula {
+                font-size: 1.1rem;
+                padding: 15px;
+            }
+            
+            .room-details {
+                padding: 20px;
+            }
+            
+            .monthly-price {
+                font-size: 2rem;
+            }
+            
+            .modal-body {
+                padding: 20px;
+            }
+            
+            .modal-footer {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div>
+                        <h1>SHINE BOY PG</h1>
+                        <p>Garchuk, Guwahati | Since 2026</p>
+                    </div>
+                </div>
+
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Rooms</a></li>
+                    <li><a href="#">Facilities</a></li>
+                    <li><a href="#">Food Menu</a></li>
+                    <li><a href="#" class="book-now-btn">BOOK NOW</a></li>
+                </ul>
+
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Rooms Section -->
+    <section class="rooms-section">
+        <div class="container">
+            <!-- Section Title -->
+            <div class="section-title">
+                <h1>Our Rooms & Pricing</h1>
+                <p>Choose from our comfortable and affordable room options. All rooms come with complete furnishings and essential amenities.</p>
+            </div>
+
+            <!-- Payment Summary -->
+            <div class="payment-summary">
+                <h2>Payment Structure</h2>
+                <div class="payment-formula">
+                    Total Payable at Admission = Monthly Fee + Admission Fee (₹1,000) + Security Deposit
+                </div>
+                <p>Our pricing is completely transparent with no hidden charges. The security deposit is fully refundable when you vacate, after adjusting for any dues or damages.</p>
+                
+                <div class="payment-notes">
+                    <div class="payment-note">
+                        <h4><i class="fas fa-calendar-check"></i> Admission Fee</h4>
+                        <p>₹1,000 (one-time, non-refundable fee paid at the time of joining)</p>
+                    </div>
+                    <div class="payment-note">
+                        <h4><i class="fas fa-shield-alt"></i> Security Deposit</h4>
+                        <p>Refundable amount held for the duration of your stay. Refunded when vacating after adjusting dues/damages</p>
+                    </div>
+                    <div class="payment-note">
+                        <h4><i class="fas fa-money-bill-wave"></i> Monthly Rent</h4>
+                        <p>To be paid on or before 7th of every month. Includes room, electricity, water, Wi-Fi and meals</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Room Cards Grid -->
+            <div class="rooms-grid">
+                <!-- Single Room Non-AC -->
+                <div class="room-card">
+                    <div class="room-badge">Most Popular</div>
+                    <div class="room-image">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Single Room">
+                        <div class="room-type">
+                            <h3>Single Room</h3>
+                            <div class="ac-badge">Non-AC</div>
+                        </div>
+                    </div>
+                    
+                    <div class="room-details">
+                        <div class="room-price">
+                            <div class="monthly-price">₹12,000</div>
+                            <div class="price-label">per month</div>
+                        </div>
+                        
+                        <ul class="room-features">
+                            <li>
+                                <div class="feature-name">
+                                    <i class="fas fa-bed"></i>
+                                    <span>Room Type</span>
+                                </div>
+                                <div class="feature-value">Single Occupancy</div>
+                            </li>
+                            <li>
+                                <div class="feature-name">
+                                    <i class="fas fa-wifi"></i>
+                                    <span>Wi-Fi Speed</span>
+                                </div>
+                                <div class="feature-value">High-Speed</div>
+                            </li>
+                            <li>
+                                <div class="feature-name">
+                                    <i class="fas fa-utensils"></i>
+                                    <span>Meals Included</span>
+                                </div>
+                                <div class="feature-value">Breakfast, Lunch, Dinner</div>
+                            </li>
+                            <li>
+                                <div class="feature-name">
+                                    <i class="fas fa-shower"></i>
+                                    <span>Bathroom</span>
+                                </div>
+                                <div class="feature-value">Attached</div>
+                            </li>
+                        </ul>
+                        
+                        <div class="room-total">
+                            <h4>Total at Admission</h4>
+                            <div class="total-amount">₹37,000</div>
+                            <p>(₹12,000 + ₹1,000 + ₹24,000)</p>
+                        </div>
+                        
+                        <button class="book-btn" data-room="Single Non-AC" data-price="12000">
+                            <i class="fas fa-calendar-check"></i> Book This Room
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Single Room AC -->
+                <div class="room-card">
+                    <div class="room-badge">Premium</div>
+                    <div class="room-image">
+                        <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Single AC Room">
+                        <div class="room-type">
+                            <h3>Single Room</h3>
+                            <div class="ac-badge" style="background: #34a853;">AC Available</div>
+                        </div>
+                    </div>
+                    
+                    <div class="room-details">
+                        <div class="room-price">
+                            <div class="monthly-price">₹16,000</div>
+                            <div class="price-label">per month</div>
+                        </div>
+                        
+                        <ul class="room-features">
+                            <li>
+                                <div class="feature-name">
+                                    <i class="fas fa-bed"></i>
+                                    <span>Room Type</span>
+                                </div>
+                                <div class="feature-value">Single Occupancy</div>
+                            </li>
+                            <li>
+                                <div class="feature-name">
+                                    <i class="fas fa-snowflake"></i>
+                                    <span>Air Conditioning</span>
+                                </div>
+                                <div class="feature-value">Split AC Included</div>
+                            </li>
+                            <li>
+                                <div class="feature-name">
+                                    <i class="fas fa-utensils"></i>
+                                    <span>Meals Included</span>
+                                </div>
+                                <div class="feature-value">Breakfast, Lunch, Dinner</div>
+                            </li>
+                            <li>
+                                <div class="feature-name">
+                                    <i class="fas fa-tv"></i>
+                                    <span>Entertainment</span>
+                                </div>
+                                <div class="feature-value">TV Available</div>
+                            </li>
+                        </ul>
+                        
+                        <div class="room-total">
+                            <h4>Total at Admission</h4>
+                            <div class="total-amount">₹49,000</div>
+                            <p>(₹16,000 + ₹1,000 + ₹32,000)</p>
+                        </div>
+                        
+                        <button class="book-btn" data-room="Single AC" data-price="16000">
+                            <i class="fas fa-calendar-check"></i> Book This Room
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Double Sharing AC -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Double Sharing Room">
+                        <div class="room-type">
+                            <h3>Double Sharing</h3>
+                            <div class="ac-badge" style="background: #34a853;">AC Available</div>
+                        </div>
+                    </div>
+                    
+                    <div class="room-details">
+                        <div class="room-price">
+                            <div class="monthly-price">₹9,000</div>
+                            <div class="price-label">per person/month</div>
+                        </div>
+                        
+                        <ul class="room-features">
+                            <li>
+                                <div class="feature-name">
+                                    <i class="fas fa-users"></i>
+                                    <span>Sharing Type</span>
+                                </div>
+                                <div class="feature-value">2 Persons Sharing</div>
+                            </li>
+                            <li>
+                                <div class="feature-name">
+                                    <i class="fas fa-snowflake"></i>
+                                    <span>Air Conditioning</span>
+                                </div>
+                                <div class="feature-value">Split AC Included</div>
+                            </li>
+                            <li>
+                                <div class="feature-name">
+                                    <i class="fas fa-utensils"></i>
+                                    <span>Meals Included</span>
+                                </div>
+                                <div class="feature-value">Breakfast, Lunch, Dinner</div>
+                            </li>
+                            <li>
+                                <div class="feature-name">
+                                    <i class="fas fa-desktop"></i>
+                                    <span>Study Area</span>
+                                </div>
+                                <div class="feature-value">2 Study Tables</div>
+                            </li>
+                        </ul>
+                        
+                        <div class="room-total">
+                            <h4>Total at Admission</h4>
+                            <div class="total-amount">₹28,000</div>
+                            <p>(₹9,000 + ₹1,000 + ₹18,000)</p>
+                        </div>
+                        
+                        <button class="book-btn" data-room="Double Sharing AC" data-price="9000">
+                            <i class="fas fa-calendar-check"></i> Book This Room
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Double Sharing Non-AC -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Double Sharing Non-AC">
+                        <div class="room-type">
+                            <h3>Double Sharing</h3>
+                            <div class="ac-badge">Non-AC</div>
+                        </div>
+                    </div>
+                    
+                    <div class="room-details">
+                        <div class="room-price">
+                            <div class="monthly-price">₹14,000</div>
+                            <div class="price-label">per person/month</div>
+                        </div>
+                        
+                        <ul class="room-features">
+                            <li>
+                                <div class="feature-name">
+                                    <i class="fas fa-users"></i>
+                                    <span>Sharing Type</span>
+                                </div>
+                                <div class="feature-value">2 Persons Sharing</div>
+                            </li>
+                            <li>
+                                <div class="feature-name">
+                                    <i class="fas fa-fan"></i>
+                                    <span>Cooling</span>
+                                </div>
+                                <div class="feature-value">Ceiling Fan</div>
+                            </li>
+                            <li>
+                                <div class="feature-name">
+                                    <i class="fas fa-utensils"></i>
+                                    <span>Meals Included</span>
+                                </div>
+                                <div class="feature-value">Breakfast, Lunch, Dinner</div>
+                            </li>
+                            <li>
+                                <div class="feature-name">
+                                    <i class="fas fa-tshirt"></i>
+                                    <span>Laundry</span>
+                                </div>
+                                <div class="feature-value">Weekly Service</div>
+                            </li>
+                        </ul>
+                        
+                        <div class="room-total">
+                            <h4>Total at Admission</h4>
+                            <div class="total-amount">₹43,000</div>
+                            <p>(₹14,000 + ₹1,000 + ₹28,000)</p>
+                        </div>
+                        
+                        <button class="book-btn" data-room="Double Sharing Non-AC" data-price="14000">
+                            <i class="fas fa-calendar-check"></i> Book This Room
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Triple Sharing AC -->
+                <div class="room-card">
+                    <div class="room-badge">Economical</div>
+                    <div class="room-image">
+                        <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Triple Sharing Room">
+                        <div class="room-type">
+                            <h3>Triple Sharing</h3>
+                            <div class="ac-badge" style="background: #34a853;">AC Available</div>
+                        </div>
+                    </div>
+                    
+                    <div class="room-details">
+                        <div class="room-price">
+                            <div class="monthly-price">₹12,000</div>
+                            <div class="price-label">per person/month</div>
+                        </div>
+                        
+                        <ul class="room-features">
+                            <li>
+                                <div class="feature-name">
+                                    <i class="fas fa-users"></i>
+                                    <span>Sharing Type</span>
+                                </div>
+                                <div class="feature-value">3 Persons Sharing</div>
+                            </li>
+                            <li>
+                                <div class="feature-name">
+                                    <i class="fas fa-snowflake"></i>
+                                    <span>Air Conditioning</span>
+                                </div>
+                                <div class="feature-value">Split AC Included</div>
+                            </li>
+                            <li>
+                                <div class="feature-name">
+                                    <i class="fas fa-utensils"></i>
+                                    <span>Meals Included</span>
+                                </div>
+                                <div class="feature-value">Breakfast, Lunch, Dinner</div>
+                            </li>
+                            <li>
+                                <div class="feature-name">
+                                    <i class="fas fa-couch"></i>
+                                    <span>Furniture</span>
+                                </div>
+                                <div class="feature-value">3 Study Tables</div>
+                            </li>
+                        </ul>
+                        
+                        <div class="room-total">
+                            <h4>Total at Admission</h4>
+                            <div class="total-amount">₹37,000</div>
+                            <p>(₹12,000 + ₹1,000 + ₹24,000)</p>
+                        </div>
+                        
+                        <button class="book-btn" data-room="Triple Sharing AC" data-price="12000">
+                            <i class="fas fa-calendar-check"></i> Book This Room
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Triple Sharing Non-AC -->
+                <div class="room-card">
+                    <div class="room-badge">Budget Friendly</div>
+                    <div class="room-image">
+                        <img src="https://images.unsplash.com/photo-1560184897-ae75f418493e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Triple Sharing Non-AC">
+                        <div class="room-type">
+                            <h3>Triple Sharing</h3>
+                            <div class="ac-badge">Non-AC</div>
+                        </div>
+                    </div>
+                    
+                    <div class="room-details">
+                        <div class="room-price">
+                            <div class="monthly-price">₹8,000</div>
+                            <div class="price-label">per person/month</div>
+                        </div>
+                        
+                        <ul class="room-features">
+                            <li>
+                                <div class="feature-name">
+                                    <i class="fas fa-users"></i>
+                                    <span>Sharing Type</span>
+                                </div>
+                                <div class="feature-value">3 Persons Sharing</div>
+                            </li>
+                            <li>
+                                <div class="feature-name">
+                                    <i class="fas fa-fan"></i>
+                                    <span>Cooling</span>
+                                </div>
+                                <div class="feature-value">2 Ceiling Fans</div>
+                            </li>
+                            <li>
+                                <div class="feature-name">
+                                    <i class="fas fa-utensils"></i>
+                                    <span>Meals Included</span>
+                                </div>
+                                <div class="feature-value">Breakfast, Lunch, Dinner</div>
+                            </li>
+                            <li>
+                                <div class="feature-name">
+                                    <i class="fas fa-wifi"></i>
+                                    <span>Internet</span>
+                                </div>
+                                <div class="feature-value">High-Speed Wi-Fi</div>
+                            </li>
+                        </ul>
+                        
+                        <div class="room-total">
+                            <h4>Total at Admission</h4>
+                            <div class="total-amount">₹25,000</div>
+                            <p>(₹8,000 + ₹1,000 + ₹16,000)</p>
+                        </div>
+                        
+                        <button class="book-btn" data-room="Triple Sharing Non-AC" data-price="8000">
+                            <i class="fas fa-calendar-check"></i> Book This Room
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Room Comparison Table -->
+            <div class="room-comparison">
+                <h2 class="comparison-title">Room Comparison</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Single Non-AC</th>
+                            <th>Single AC</th>
+                            <th>Double AC</th>
+                            <th>Double Non-AC</th>
+                            <th>Triple AC</th>
+                            <th>Triple Non-AC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Monthly Rent</strong></td>
+                            <td>₹12,000</td>
+                            <td>₹16,000</td>
+                            <td>₹9,000</td>
+                            <td>₹14,000</td>
+                            <td>₹12,000</td>
+                            <td>₹8,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Security Deposit</strong></td>
+                            <td>₹24,000</td>
+                            <td>₹32,000</td>
+                            <td>₹18,000</td>
+                            <td>₹28,000</td>
+                            <td>₹24,000</td>
+                            <td>₹16,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total at Admission</strong></td>
+                            <td>₹37,000</td>
+                            <td>₹49,000</td>
+                            <td>₹28,000</td>
+                            <td>₹43,000</td>
+                            <td>₹37,000</td>
+                            <td>₹25,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Air Conditioning</strong></td>
+                            <td class="not-available">No</td>
+                            <td class="available">Yes</td>
+                            <td class="available">Yes</td>
+                            <td class="not-available">No</td>
+                            <td class="available">Yes</td>
+                            <td class="not-available">No</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Attached Bathroom</strong></td>
+                            <td class="available">Yes</td>
+                            <td class="available">Yes</td>
+                            <td class="available">Yes</td>
+                            <td class="available">Yes</td>
+                            <td class="available">Yes</td>
+                            <td class="available">Yes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Meals Included</strong></td>
+                            <td class="available">3 per day</td>
+                            <td class="available">3 per day</td>
+                            <td class="available">3 per day</td>
+                            <td class="available">3 per day</td>
+                            <td class="available">3 per day</td>
+                            <td class="available">3 per day</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Wi-Fi</strong></td>
+                            <td class="available">High-Speed</td>
+                            <td class="available">High-Speed</td>
+                            <td class="available">High-Speed</td>
+                            <td class="available">High-Speed</td>
+                            <td class="available">High-Speed</td>
+                            <td class="available">High-Speed</td>
+                        </tr>
+                        
+                             
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Modal -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <div class="modal-header">
+                <h3>Book Your Room</h3>
+                <p>Fill the form below to reserve your room</p>
+            </div>
+            <div class="modal-body">
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label for="roomType">Selected Room</label>
+                        <input type="text" id="roomType" class="form-control" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="monthlyRent">Monthly Rent</label>
+                        <input type="text" id="monthlyRent" class="form-control" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" class="form-control" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number *</label>
+                        <input type="tel" id="phoneNumber" class="form-control" placeholder="Enter 10-digit mobile number" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="Enter your email address">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="moveInDate">Preferred Move-in Date *</label>
+                        <input type="date" id="moveInDate" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="occupation">Occupation *</label>
+                        <select id="occupation" class="form-control" required>
+                            <option value="">Select your occupation</option>
+                            <option value="Student">Student</option>
+                            <option value="Working Professional">Working Professional</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Additional Requirements</label>
+                        <textarea id="message" class="form-control" rows="3" placeholder="Any special requirements or questions..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="cancelBooking">Cancel</button>
+                <button type="button" class="btn btn-primary" id="submitBooking">Submit Booking</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SHINE BOY PG</h3>
+                    <p>Providing quality student accommodation in Garchuk, Guwahati since 2026. Our mission is to create a home away from home with safety, comfort, and all essential facilities.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Rooms</a></li>
+                        <li><a href="#">Facilities</a></li>
+                        <li><a href="#">Food Menu</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Garchuk Chariali, Guwahati, Assam</li>
+                        <li><i class="fas fa-phone-alt" style="margin-right: 10px;"></i> +91 8638647969</li>
+                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> shineboyspg@gmail.com</li>
+                        <li><i class="fas fa-clock" style="margin-right: 10px;"></i> 8:00 AM - 9:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2026 SHINE BOY PG, Garchuk Chariali, Guwahati. All rights reserved. | Designed for Student Accommodation</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Booking Modal Functionality
+        const bookingModal = document.getElementById('bookingModal');
+        const closeModal = document.getElementById('closeModal');
+        const cancelBooking = document.getElementById('cancelBooking');
+        const bookButtons = document.querySelectorAll('.book-btn');
+        const roomTypeInput = document.getElementById('roomType');
+        const monthlyRentInput = document.getElementById('monthlyRent');
+        const submitBooking = document.getElementById('submitBooking');
+        const bookingForm = document.getElementById('bookingForm');
+
+        // Set minimum date for move-in date
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        document.getElementById('moveInDate').min = tomorrow.toISOString().split('T')[0];
+
+        // Open modal when book button is clicked
+        bookButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const roomType = button.getAttribute('data-room');
+                const monthlyPrice = button.getAttribute('data-price');
+                
+                roomTypeInput.value = roomType;
+                monthlyRentInput.value = `₹${monthlyPrice}/month`;
+                
+                bookingModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close modal functions
+        const closeModalFunc = () => {
+            bookingModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        };
+
+        closeModal.addEventListener('click', closeModalFunc);
+        cancelBooking.addEventListener('click', closeModalFunc);
+
+        // Close modal when clicking outside
+        bookingModal.addEventListener('click', (e) => {
+            if (e.target === bookingModal) {
+                closeModalFunc();
+            }
+        });
+
+        // Submit booking form
+        submitBooking.addEventListener('click', () => {
+            // Validate form
+            const fullName = document.getElementById('fullName').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const moveInDate = document.getElementById('moveInDate').value;
+            const occupation = document.getElementById('occupation').value;
+            
+            if (!fullName || !phoneNumber || !moveInDate || !occupation) {
+                alert('Please fill in all required fields (marked with *)');
+                return;
+            }
+            
+            // Create WhatsApp message
+            const roomType = roomTypeInput.value;
+            const monthlyRent = monthlyRentInput.value;
+            const email = document.getElementById('email').value || 'Not provided';
+            const message = document.getElementById('message').value || 'No additional requirements';
+            
+            const whatsappMessage = `*NEW ROOM BOOKING - SHINE BOY PG*%0A%0A` +
+                `*Room Type:* ${roomType}%0A` +
+                `*Monthly Rent:* ${monthlyRent}%0A` +
+                `*Full Name:* ${fullName}%0A` +
+                `*Phone Number:* ${phoneNumber}%0A` +
+                `*Email:* ${email}%0A` +
+                `*Move-in Date:* ${moveInDate}%0A` +
+                `*Occupation:* ${occupation}%0A` +
+                `*Additional Requirements:* ${message}%0A%0A` +
+                `_This booking request was submitted via SHINE BOY PG website._`;
+            
+            // Open WhatsApp with pre-filled message
+            const whatsappUrl = `https://wa.me/918638647969?text=${whatsappMessage}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Show confirmation message
+            alert('Thank you for your booking request! You are being redirected to WhatsApp to confirm your booking with the PG manager.');
+            
+            // Close modal and reset form
+            closeModalFunc();
+            bookingForm.reset();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHINE BOYS' PG · Booking (WhatsApp Text)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ========== ORIGINAL STYLES (unchanged) ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        :root {
+            --primary: #1a73e8;
+            --secondary: #34a853;
+            --accent: #fbbc05;
+            --dark: #202124;
+            --light: #f8f9fa;
+            --highlight: #ff6b35;
+        }
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary), #0d47a1);
+            color: white;
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo h1 {
+            font-size: 1.5rem;
+            margin-bottom: 3px;
+        }
+        .logo p {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+        .logo-icon {
+            background-color: var(--accent);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        .nav-links {
+            display: none;
+            list-style: none;
+        }
+        .mobile-menu {
+            display: block;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+            z-index: 1001;
+        }
+        .mobile-menu-close {
+            display: block;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+        }
+        .nav-links.mobile-open {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary), #0d47a1);
+            padding-top: 80px;
+            gap: 15px;
+            z-index: 999;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            animation: slideInRight 0.3s ease;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 20px;
+            display: block;
+            border-left: 4px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .nav-links a:hover {
+            border-left: 4px solid var(--accent);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .book-now-btn {
+            background: linear-gradient(45deg, #d32f2f, #ff5722);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
+            border: 2px solid white;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .booking-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .booking-hero h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .booking-hero p {
+            font-size: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .progress-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 30px auto 40px;
+            position: relative;
+            max-width: 900px;
+        }
+        .progress-steps:before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background-color: #e0e0e0;
+            z-index: 1;
+        }
+        .progress-bar {
+            position: absolute;
+            top: 20px;
+            left: 10%;
+            height: 3px;
+            background-color: var(--secondary);
+            z-index: 2;
+            transition: width 0.5s ease;
+        }
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 3;
+            flex: 1;
+            min-width: 100px;
+        }
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        .step.active .step-number {
+            background-color: var(--secondary);
+            color: white;
+            transform: scale(1.1);
+        }
+        .step.completed .step-number {
+            background-color: var(--primary);
+            color: white;
+        }
+        .step-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #666;
+            text-align: center;
+            padding: 0 5px;
+        }
+        .step.active .step-label {
+            color: var(--secondary);
+        }
+        .form-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            max-width: 900px;
+            margin: 0 auto 40px;
+            animation: fadeIn 0.8s ease;
+        }
+        .form-step {
+            display: none;
+        }
+        .form-step.active {
+            display: block;
+        }
+        .step-title {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .step-subtitle {
+            color: var(--dark);
+            font-size: 1rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .form-row {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+        .form-group label.required:after {
+            content: ' *';
+            color: #e53935;
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+            outline: none;
+        }
+        .upload-area {
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 25px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            background-color: #f8f9fa;
+        }
+        .upload-area:hover {
+            border-color: var(--primary);
+            background-color: #e8f0fe;
+        }
+        .upload-area input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .upload-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        .upload-text {
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+            color: var(--dark);
+        }
+        .upload-hint {
+            color: #666;
+            font-size: 0.85rem;
+        }
+        .file-preview {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            display: none;
+            border: 1px solid #ddd;
+        }
+        .file-preview.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .file-icon {
+            color: var(--primary);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .file-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--dark);
+            word-break: break-all;
+        }
+        .file-size {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 5px;
+        }
+        .remove-file {
+            margin-left: auto;
+            color: #e53935;
+            cursor: pointer;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+        }
+        .btn {
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            min-width: 120px;
+            text-align: center;
+        }
+        .btn-prev {
+            background-color: #f5f5f5;
+            color: var(--dark);
+        }
+        .btn-prev:hover {
+            background-color: #e0e0e0;
+        }
+        .btn-next {
+            background-color: var(--primary);
+            color: white;
+        }
+        .btn-next:hover {
+            background-color: #0d47a1;
+            box-shadow: 0 5px 15px rgba(26, 115, 232, 0.3);
+        }
+        /* Attractive submit button */
+        .btn-submit {
+            background: linear-gradient(45deg, var(--secondary), #2e7d32);
+            color: white;
+            border: none;
+            box-shadow: 0 6px 18px rgba(52, 168, 83, 0.4);
+            transition: all 0.3s ease;
+        }
+        .btn-submit:hover {
+            background: linear-gradient(45deg, #2e7d32, var(--secondary));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(52, 168, 83, 0.5);
+        }
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: auto;
+            margin: 15px 0 5px;
+        }
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        .price-calculator {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+            border: 2px solid #dee2e6;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        .price-header {
+            color: var(--primary);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .price-header i {
+            color: var(--secondary);
+        }
+        .price-details {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px dashed #dee2e6;
+        }
+        .price-label {
+            font-weight: 600;
+            color: #495057;
+            font-size: 0.95rem;
+        }
+        .price-value {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 1.05rem;
+        }
+        .price-amount {
+            color: var(--secondary);
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+        .total-price {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 800;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
+        }
+        .total-amount {
+            background-color: var(--highlight);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 800;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2);
+        }
+        .price-note {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 10px;
+            font-style: italic;
+            text-align: center;
+        }
+        @keyframes priceUpdate {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); color: var(--highlight); }
+            100% { transform: scale(1); }
+        }
+        .price-updated {
+            animation: priceUpdate 0.5s ease;
+        }
+        .room-option {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 5px 0;
+            background-color: #f8f9fa;
+        }
+        .room-option:hover {
+            border-color: var(--primary);
+            background-color: #e8f0fe;
+        }
+        .room-option.selected {
+            border-color: var(--secondary);
+            background-color: #e8f5e9;
+            box-shadow: 0 4px 12px rgba(52, 168, 83, 0.1);
+        }
+        .room-option input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        .room-details {
+            flex-grow: 1;
+        }
+        .room-type {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 1rem;
+        }
+        .room-price {
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin-left: 10px;
+            float: right;
+        }
+        .success-message {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .success-icon {
+            font-size: 4rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            animation: bounce 1s infinite alternate;
+        }
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+        @media (min-width: 768px) {
+            body { font-size: 17px; }
+            .logo h1 { font-size: 1.8rem; }
+            .logo p { font-size: 0.9rem; }
+            .logo-icon { width: 60px; height: 60px; font-size: 1.8rem; }
+            .mobile-menu { display: none; }
+            .nav-links { display: flex; list-style: none; gap: 20px; }
+            .nav-links a { color: white; text-decoration: none; font-weight: 600; padding: 5px 10px; border-radius: 4px; transition: all 0.3s ease; border-left: none; }
+            .nav-links a:hover { background-color: rgba(255, 255, 255, 0.2); }
+            .book-now-btn { margin-top: 0; padding: 12px 28px; font-size: 1.1rem; }
+            .booking-hero { padding: 80px 0; }
+            .booking-hero h2 { font-size: 2.5rem; }
+            .booking-hero p { font-size: 1.2rem; }
+            .progress-steps { margin: 40px auto 60px; }
+            .progress-steps:before { left: 5%; right: 5%; }
+            .progress-bar { left: 5%; }
+            .step { flex: 1; min-width: auto; }
+            .form-container { padding: 30px; }
+            .step-title { font-size: 1.8rem; margin-bottom: 30px; }
+            .form-row { flex-direction: row; gap: 25px; }
+            .form-group { flex: 1; }
+            .upload-area { padding: 30px; }
+            .upload-icon { font-size: 2.5rem; }
+            .btn { padding: 14px 30px; min-width: 140px; }
+            .price-calculator { padding: 25px; }
+            .price-header { font-size: 1.5rem; }
+        }
+        @media (min-width: 992px) {
+            .container { width: 90%; }
+            .nav-links { gap: 25px; }
+            .progress-steps { margin: 50px auto 70px; }
+            .step-label { font-size: 0.9rem; }
+            .form-container { padding: 40px; }
+            .upload-area { padding: 35px; }
+            .upload-icon { font-size: 3rem; }
+            .upload-text { font-size: 1.1rem; }
+        }
+        @media (max-width: 360px) {
+            .logo h1 { font-size: 1.3rem; }
+            .logo p { font-size: 0.7rem; }
+            .logo-icon { width: 40px; height: 40px; font-size: 1.2rem; }
+            .booking-hero h2 { font-size: 1.7rem; }
+            .booking-hero p { font-size: 0.9rem; }
+            .step { min-width: 80px; }
+            .step-number { width: 35px; height: 35px; font-size: 0.8rem; }
+            .step-label { font-size: 0.7rem; }
+            .form-container { padding: 15px; }
+            .step-title { font-size: 1.3rem; }
+            .upload-area { padding: 20px 15px; }
+            .btn { padding: 10px 15px; min-width: 100px; font-size: 0.9rem; }
+        }
+        /* Fallback message styling (kept but will be hidden) */
+        .fallback-message {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            display: none;
+        }
+        .fallback-message.show {
+            display: block;
+        }
+        /* Home button */
+        .btn-home {
+            background-color: var(--primary);
+            color: white;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        .btn-home:hover {
+            background-color: #0d47a1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header (unchanged) -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div>
+                        <h1>SHINE BOYS' PG</h1>
+                        <p>Garchuk, Guwahati | Since 2025</p>
+                    </div>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#rooms">Rooms</a></li>
+                    <li><a href="index.html#menu">Food Menu</a></li>
+                    <li><a href="index.html#facilities">Facilities</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="Booking.html">BOOK NOW</a></li>
+                    <div class="mobile-menu-close" id="mobileMenuClose">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </ul>
+                <div class="mobile-menu" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Booking Hero -->
+    <section class="booking-hero">
+        <div class="container">
+            <h2>Online Booking Form</h2>
+            <p>Complete this 8-step form to book your room at SHINE BOYS' PG</p>
+        </div>
+    </section>
+
+    <!-- Progress Steps -->
+    <div class="container">
+        <div class="progress-steps">
+            <div class="progress-bar" id="progressBar" style="width: 12.5%;"></div>
+            <div class="step active" data-step="1">
+                <div class="step-number">1</div>
+                <div class="step-label">Personal Info</div>
+            </div>
+            <div class="step" data-step="2">
+                <div class="step-number">2</div>
+                <div class="step-label">Education/Job</div>
+            </div>
+            <div class="step" data-step="3">
+                <div class="step-number">3</div>
+                <div class="step-label">Emergency Contact</div>
+            </div>
+            <div class="step" data-step="4">
+                <div class="step-number">4</div>
+                <div class="step-label">Accommodation</div>
+            </div>
+            <div class="step" data-step="5">
+                <div class="step-number">5</div>
+                <div class="step-label">Documents</div>
+            </div>
+            <div class="step" data-step="6">
+                <div class="step-number">6</div>
+                <div class="step-label">Declaration</div>
+            </div>
+            <div class="step" data-step="7">
+                <div class="step-number">7</div>
+                <div class="step-label">Agreement</div>
+            </div>
+            <div class="step" data-step="8">
+                <div class="step-number">8</div>
+                <div class="step-label">Success</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Container (all steps exactly as original, step8 success message slightly adjusted) -->
+    <div class="container">
+        <div class="form-container">
+            <!-- Step 1 (identical) -->
+            <div class="form-step active" id="step1">
+                <h2 class="step-title">Step 1: Personal Information</h2>
+                <p class="step-subtitle">Please provide your personal details</p>
+                <form id="personalInfoForm">
+                    <div class="form-row"><div class="form-group"><label for="fullName" class="required">Full Name</label><input type="text" id="fullName" class="form-control" placeholder="Enter your full name" required></div></div>
+                    <div class="form-row"><div class="form-group"><label for="fatherName" class="required">Father's / Mother's Name</label><input type="text" id="fatherName" class="form-control" placeholder="Enter parent's name" required></div></div>
+                    <div class="form-row"><div class="form-group"><label for="dob" class="required">Date of Birth</label><input type="date" id="dob" class="form-control" required></div><div class="form-group"><label class="required">Gender</label><div style="display: flex; flex-wrap: wrap; gap: 15px;"><div style="display: flex; align-items: center;"><input type="radio" id="genderMale" name="gender" value="Male" required><label for="genderMale" style="margin-left: 5px;">Male</label></div><div style="display: flex; align-items: center;"><input type="radio" id="genderFemale" name="gender" value="Female"><label for="genderFemale" style="margin-left: 5px;">Female</label></div><div style="display: flex; align-items: center;"><input type="radio" id="genderOther" name="gender" value="Other"><label for="genderOther" style="margin-left: 5px;">Other</label></div></div></div></div>
+                    <div class="form-row"><div class="form-group"><label for="bloodGroup" class="required">Blood Group</label><select id="bloodGroup" class="form-control" required><option value="">Select Blood Group</option><option value="A+">A+</option><option value="A-">A-</option><option value="B+">B+</option><option value="B-">B-</option><option value="O+">O+</option><option value="O-">O-</option><option value="AB+">AB+</option><option value="AB-">AB-</option></select></div><div class="form-group"><label for="mobile" class="required">Mobile No.</label><input type="tel" id="mobile" class="form-control" placeholder="10-digit mobile number" pattern="[0-9]{10}" required></div></div>
+                    <div class="form-row"><div class="form-group"><label for="aadhar" class="required">Aadhar No.</label><input type="text" id="aadhar" class="form-control" placeholder="12-digit Aadhar number" pattern="[0-9]{12}" required></div><div class="form-group"><label for="email" class="required">Email ID</label><input type="email" id="email" class="form-control" placeholder="Your email address" required></div></div>
+                    <div class="form-group"><label for="permanentAddress" class="required">Permanent Address</label><textarea id="permanentAddress" class="form-control" rows="3" placeholder="Enter your permanent address" required></textarea></div>
+                    <div class="form-group"><label for="photoUpload" class="required">Passport Size Photo</label><div class="upload-area" id="photoUploadArea"><input type="file" id="photoUpload" accept="image/*" required><div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div><div class="upload-text">Click to upload passport photo</div><div class="upload-hint">JPEG or PNG, max 5MB</div></div><div class="file-preview" id="photoPreview"><div class="file-info"><i class="fas fa-file-image file-icon"></i><div><div class="file-name" id="photoFileName">No file selected</div><div class="file-size" id="photoFileSize"></div></div><div class="remove-file" id="removePhoto"><i class="fas fa-times"></i></div></div></div></div>
+                    <div class="form-navigation"><button type="button" class="btn btn-prev" disabled>Previous</button><button type="button" class="btn btn-next" id="nextStep1">Next Step</button></div>
+                </form>
+            </div>
+            <!-- Step 2 (unchanged) -->
+            <div class="form-step" id="step2">
+                <h2 class="step-title">Step 2: Educational / Professional Details</h2>
+                <p class="step-subtitle">Please provide your educational or professional information</p>
+                <div class="form-row"><div class="form-group"><label for="occupation" class="required">Occupation</label><select id="occupation" class="form-control" required><option value="">Select Occupation</option><option value="Student">Student</option><option value="Employee">Employee</option><option value="Other">Other</option></select></div></div>
+                <div class="form-row"><div class="form-group"><label for="institutionName" class="required">Institution / Company Name</label><input type="text" id="institutionName" class="form-control" placeholder="School/College/Company name" required></div></div>
+                <div class="form-row"><div class="form-group"><label for="idNumber" class="required">ID / Enrollment / Employee No.</label><input type="text" id="idNumber" class="form-control" placeholder="Your ID number" required></div></div>
+                <div class="form-row"><div class="form-group"><label for="officeAddress" class="required">Office / College Address</label><textarea id="officeAddress" class="form-control" rows="3" placeholder="Enter office or college address" required></textarea></div></div>
+                <div class="form-row"><div class="form-group"><label for="collegeDepartment">College Department (if student)</label><input type="text" id="collegeDepartment" class="form-control" placeholder="Department name"></div></div>
+                <div class="form-navigation"><button type="button" class="btn btn-prev" id="prevStep2">Previous</button><button type="button" class="btn btn-next" id="nextStep2">Next Step</button></div>
+            </div>
+            <!-- Step 3 (unchanged) -->
+            <div class="form-step" id="step3">
+                <h2 class="step-title">Step 3: Emergency Contact Details</h2>
+                <p class="step-subtitle">Please provide emergency contact information</p>
+                <div class="form-row"><div class="form-group"><label for="emergencyName" class="required">Name</label><input type="text" id="emergencyName" class="form-control" placeholder="Emergency contact name" required></div></div>
+                <div class="form-row"><div class="form-group"><label for="relationship" class="required">Relationship</label><input type="text" id="relationship" class="form-control" placeholder="Relationship with you" required></div></div>
+                <div class="form-row"><div class="form-group"><label for="emergencyContact" class="required">Contact No.</label><input type="tel" id="emergencyContact" class="form-control" placeholder="10-digit mobile number" pattern="[0-9]{10}" required></div></div>
+                <div class="form-row"><div class="form-group"><label for="emergencyAddress" class="required">Address</label><textarea id="emergencyAddress" class="form-control" rows="3" placeholder="Emergency contact address" required></textarea></div></div>
+                <div class="form-row"><div class="form-group"><label for="emergencyAadhar">Aadhar No. (Optional)</label><input type="text" id="emergencyAadhar" class="form-control" placeholder="12-digit Aadhar number" pattern="[0-9]{12}"></div></div>
+                <div class="form-navigation"><button type="button" class="btn btn-prev" id="prevStep3">Previous</button><button type="button" class="btn btn-next" id="nextStep3">Next Step</button></div>
+            </div>
+            <!-- Step 4 (unchanged) -->
+            <div class="form-step" id="step4">
+                <h2 class="step-title">Step 4: Accommodation Details</h2>
+                <p class="step-subtitle">Select your room type and preferences</p>
+                <div class="form-row"><div class="form-group"><label class="required">Room Type</label><div class="room-option"><input type="radio" id="roomSingle" name="roomType" value="Single" required><div class="room-details"><span class="room-type">Single Room </span><span class="room-price" id="singlePrice">₹12,000/month</span></div></div><div class="room-option"><input type="radio" id="roomDouble" name="roomType" value="Double Sharing"><div class="room-details"><span class="room-type">Double Sharing</span><span class="room-price" id="doublePrice">₹9,000/month</span></div></div><div class="room-option"><input type="radio" id="roomTriple" name="roomType" value="Triple Sharing"><div class="room-details"><span class="room-type">Triple Sharing</span><span class="room-price" id="triplePrice">₹8,000/month</span></div></div></div></div>
+                <div class="form-row"><div class="form-group"><label class="required">Room Category</label><div class="room-option"><input type="radio" id="acRoom" name="roomCategory" value="AC" required><div class="room-details"><span class="room-type">A/C Room</span><span class="room-price">+ ₹5,000/month extra</span></div></div><div class="room-option"><input type="radio" id="nonAcRoom" name="roomCategory" value="Non-AC"><div class="room-details"><span class="room-type">Non-A/C Room</span><span class="room-price">No extra charge</span></div></div></div></div>
+                <div class="price-calculator"><div class="price-header"><i class="fas fa-calculator"></i><span>Price Calculator (First Month)</span></div><div class="price-details"><div class="price-row"><span class="price-label">Monthly Rent:</span><span class="price-value" id="monthlyRent">₹0</span></div><div class="price-row"><span class="price-label">A/C Charge:</span><span class="price-value" id="acCharge">₹0</span></div><div class="price-row"><span class="price-label">Admission Fee:</span><span class="price-value">₹1,000</span></div><div class="price-row"><span class="price-label">Security Deposit (2 Months):</span><span class="price-value" id="securityDeposit">₹0</span></div></div><div class="total-price"><span>Total Amount to Pay:</span><span class="price-amount" id="totalAmount">₹0</span></div><div class="price-note">* Security deposit is refundable at the time of vacating the room</div></div>
+                <div class="form-row"><div class="form-group"><label for="admissionDate" class="required">Admission Date</label><input type="date" id="admissionDate" class="form-control" required></div></div>
+                <div class="form-navigation"><button type="button" class="btn btn-prev" id="prevStep4">Previous</button><button type="button" class="btn btn-next" id="nextStep4">Next Step</button></div>
+            </div>
+            <!-- Step 5 (unchanged) -->
+            <div class="form-step" id="step5">
+                <h2 class="step-title">Step 5: Documents Submitted</h2>
+                <p class="step-subtitle">Select documents you will submit</p>
+                <div class="form-row"><div class="form-group"><label class="required">Select Documents to Submit</label><div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px;"><div style="display: flex; align-items: center;"><input type="checkbox" id="docAadhar" name="documents" value="Aadhar Card"><label for="docAadhar" style="margin-left: 5px;">Aadhar Card</label></div><div style="display: flex; align-items: center;"><input type="checkbox" id="docVoter" name="documents" value="Voter ID"><label for="docVoter" style="margin-left: 5px;">Voter ID</label></div><div style="display: flex; align-items: center;"><input type="checkbox" id="docPassport" name="documents" value="Passport"><label for="docPassport" style="margin-left: 5px;">Passport</label></div><div style="display: flex; align-items: center;"><input type="checkbox" id="docCollegeId" name="documents" value="College/Office ID"><label for="docCollegeId" style="margin-left: 5px;">College/Office ID</label></div></div></div></div>
+                <div class="form-row"><div class="form-group"><label for="otherDocument">Other Document (if any)</label><input type="text" id="otherDocument" class="form-control" placeholder="Specify other document"></div></div>
+                <div class="form-group"><label for="documentsUpload">Upload Documents (Optional)</label><div class="upload-area" id="documentsUploadArea"><input type="file" id="documentsUpload" accept=".pdf,.jpg,.jpeg,.png" multiple><div class="upload-icon"><i class="fas fa-file-upload"></i></div><div class="upload-text">Click to upload documents</div><div class="upload-hint">PDF, JPEG or PNG, max 5MB each</div></div><div class="file-preview" id="documentsPreview"><div class="file-info"><i class="fas fa-file file-icon"></i><div><div class="file-name" id="documentsFileName">No files selected</div><div class="file-size" id="documentsFileSize"></div></div><div class="remove-file" id="removeDocuments"><i class="fas fa-times"></i></div></div></div></div>
+                <div class="form-navigation"><button type="button" class="btn btn-prev" id="prevStep5">Previous</button><button type="button" class="btn btn-next" id="nextStep5">Next Step</button></div>
+            </div>
+            <!-- Step 6 (unchanged) -->
+            <div class="form-step" id="step6">
+                <h2 class="step-title">Step 6: Declaration</h2>
+                <p class="step-subtitle">Review your information and submit the form</p>
+                <div class="form-row"><div class="form-group"><div style="display: flex; align-items: flex-start; margin-bottom: 20px;"><input type="checkbox" id="declarationCheck" required style="margin-top: 5px; margin-right: 10px;"><label for="declarationCheck" style="font-weight: 600; line-height: 1.5;">I declare that the above information is true to the best of my knowledge. I agree to follow all the rules and regulations of the Shine Boys Paying Guest accommodation.</label></div></div></div>
+                <div class="form-row"><div class="form-group"><div style="display: flex; align-items: flex-start; margin-bottom: 20px;"><input type="checkbox" id="guardianCheck" style="margin-top: 5px; margin-right: 10px;"><label for="guardianCheck" style="line-height: 1.5;">I am a student and my guardian will sign the form upon arrival.</label></div></div></div>
+                <div class="form-navigation"><button type="button" class="btn btn-prev" id="prevStep6">Previous</button><button type="button" class="btn btn-next" id="nextStep6">Next Step</button></div>
+            </div>
+            <!-- Step 7 (unchanged) -->
+            <div class="form-step" id="step7">
+                <h2 class="step-title">Step 7: Agreement</h2>
+                <p class="step-subtitle">Please read and agree to the terms and conditions</p>
+                <div class="price-calculator" style="margin: 25px 0;"><div class="price-header"><i class="fas fa-file-contract"></i><span>Booking Summary</span></div><div class="price-details"><div class="price-row"><span class="price-label">Room Type:</span><span class="price-value" id="summaryRoomType">Not selected</span></div><div class="price-row"><span class="price-label">Room Category:</span><span class="price-value" id="summaryRoomCategory">Not selected</span></div><div class="price-row"><span class="price-label">Monthly Rent:</span><span class="price-value" id="summaryMonthlyRent">₹0</span></div><div class="price-row"><span class="price-label">A/C Charge:</span><span class="price-value" id="summaryACCharge">₹0</span></div><div class="price-row"><span class="price-label">Admission Fee:</span><span class="price-value">₹1,000</span></div><div class="price-row"><span class="price-label">Security Deposit:</span><span class="price-value" id="summarySecurityDeposit">₹0</span></div></div><div class="total-amount"><span>Total Amount to Pay:</span><span class="price-amount" id="summaryTotalAmount">₹0</span></div></div>
+                <div style="text-align: center; margin: 20px 0;"><a href="t&c.html" target="_blank" class="btn" style="background-color: var(--accent); color: var(--dark);"><i class="fas fa-file-alt"></i> View Terms & Conditions</a></div>
+                <div class="form-navigation"><button type="button" class="btn btn-prev" id="prevStep7">Previous</button><button type="button" class="btn btn-next" id="nextStep7">Next Step</button></div>
+            </div>
+            <!-- Step 8 (success + WhatsApp text-only) -->
+            <div class="form-step" id="step8">
+                <h2 class="step-title">Step 8: Booking Confirmation</h2>
+                <p class="step-subtitle">Complete your booking by submitting the form</p>
+                
+                <!-- Final Price Summary -->
+                <div class="price-calculator" style="margin: 25px 0;">
+                    <div class="price-header">
+                        <i class="fas fa-check-circle" style="color: var(--secondary);"></i>
+                        <span>Final Booking Summary</span>
+                    </div>
+                    <div class="price-details">
+                        <div class="price-row"><span class="price-label">Selected Room:</span><span class="price-value" id="finalRoomType">Not selected</span></div>
+                        <div class="price-row"><span class="price-label">Monthly Rent:</span><span class="price-value" id="finalMonthlyRent">₹0</span></div>
+                        <div class="price-row"><span class="price-label">A/C Charge:</span><span class="price-value" id="finalACCharge">₹0</span></div>
+                        <div class="price-row"><span class="price-label">Admission Fee:</span><span class="price-value">₹1,000</span></div>
+                        <div class="price-row"><span class="price-label">Security Deposit:</span><span class="price-value" id="finalSecurityDeposit">₹0</span></div>
+                    </div>
+                    <div class="total-amount">
+                        <span>Total Amount to Pay:</span>
+                        <span class="price-amount" id="finalTotalAmount">₹0</span>
+                    </div>
+                    <div class="price-note">* First month's payment and security deposit to be paid at the time of admission</div>
+                </div>
+
+                <!-- Success message (hidden until submit) -->
+                <div class="success-message" id="successMessage" style="display: none;">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Booking Submitted Successfully!</h3>
+                    <p>Your booking ID is: <strong id="bookingIdDisplay">BK123456</strong></p>
+                    <p>We will contact you shortly to confirm your booking.</p>
+                    <p>Please check your email for the booking confirmation.</p>
+                    <!-- WhatsApp share button (text-only) -->
+                    <button class="btn btn-whatsapp" id="whatsappShareBtn" style="margin-top: 15px;">
+                        <i class="fab fa-whatsapp"></i> Send Details via WhatsApp
+                    </button>
+                    <br>
+                    <a href="index.html" class="btn btn-home" style="margin-top: 10px;">
+                        <i class="fas fa-home"></i> Back to Home
+                    </a>
+                </div>
+
+                <div class="form-navigation">
+                    <button type="button" class="btn btn-prev" id="prevStep8">Previous</button>
+                    <button type="button" class="btn btn-submit" id="submitForm">Submit Booking</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========== MOBILE MENU (unchanged) ==========
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const navLinks = document.getElementById('navLinks');
+        if (mobileMenuBtn && mobileMenuClose) {
+            mobileMenuBtn.addEventListener('click', () => { navLinks.classList.add('mobile-open'); });
+            mobileMenuClose.addEventListener('click', () => { navLinks.classList.remove('mobile-open'); });
+            document.addEventListener('click', (event) => {
+                if (window.innerWidth <= 768 && !event.target.closest('nav') && navLinks.classList.contains('mobile-open')) {
+                    navLinks.classList.remove('mobile-open');
+                }
+            });
+        }
+
+        // ========== STEP MANAGEMENT (unchanged) ==========
+        let currentStep = 1;
+        const totalSteps = 8;
+        const progressBar = document.getElementById('progressBar');
+        const steps = document.querySelectorAll('.step');
+        const formSteps = document.querySelectorAll('.form-step');
+
+        const nextStep1Btn = document.getElementById('nextStep1');
+        const prevStep2Btn = document.getElementById('prevStep2');
+        const nextStep2Btn = document.getElementById('nextStep2');
+        const prevStep3Btn = document.getElementById('prevStep3');
+        const nextStep3Btn = document.getElementById('nextStep3');
+        const prevStep4Btn = document.getElementById('prevStep4');
+        const nextStep4Btn = document.getElementById('nextStep4');
+        const prevStep5Btn = document.getElementById('prevStep5');
+        const nextStep5Btn = document.getElementById('nextStep5');
+        const prevStep6Btn = document.getElementById('prevStep6');
+        const nextStep6Btn = document.getElementById('nextStep6');
+        const prevStep7Btn = document.getElementById('prevStep7');
+        const nextStep7Btn = document.getElementById('nextStep7');
+        const prevStep8Btn = document.getElementById('prevStep8');
+        const submitFormBtn = document.getElementById('submitForm');
+
+        // File upload elements
+        const photoUpload = document.getElementById('photoUpload');
+        const photoPreview = document.getElementById('photoPreview');
+        const photoFileName = document.getElementById('photoFileName');
+        const photoFileSize = document.getElementById('photoFileSize');
+        const removePhoto = document.getElementById('removePhoto');
+        const documentsUpload = document.getElementById('documentsUpload');
+        const documentsPreview = document.getElementById('documentsPreview');
+        const documentsFileName = document.getElementById('documentsFileName');
+        const documentsFileSize = document.getElementById('documentsFileSize');
+        const removeDocuments = document.getElementById('removeDocuments');
+
+        // Price elements
+        const monthlyRentElement = document.getElementById('monthlyRent');
+        const acChargeElement = document.getElementById('acCharge');
+        const securityDepositElement = document.getElementById('securityDeposit');
+        const totalAmountElement = document.getElementById('totalAmount');
+        const summaryRoomTypeElement = document.getElementById('summaryRoomType');
+        const summaryRoomCategoryElement = document.getElementById('summaryRoomCategory');
+        const summaryMonthlyRentElement = document.getElementById('summaryMonthlyRent');
+        const summaryACChargeElement = document.getElementById('summaryACCharge');
+        const summarySecurityDepositElement = document.getElementById('summarySecurityDeposit');
+        const summaryTotalAmountElement = document.getElementById('summaryTotalAmount');
+        const finalRoomTypeElement = document.getElementById('finalRoomType');
+        const finalMonthlyRentElement = document.getElementById('finalMonthlyRent');
+        const finalACChargeElement = document.getElementById('finalACCharge');
+        const finalSecurityDepositElement = document.getElementById('finalSecurityDeposit');
+        const finalTotalAmountElement = document.getElementById('finalTotalAmount');
+        const successMessage = document.getElementById('successMessage');
+        const bookingIdDisplay = document.getElementById('bookingIdDisplay');
+        const roomOptions = document.querySelectorAll('.room-option');
+
+        // Price config
+        const priceConfig = {
+            'Single': { 'Non-AC': { 'monthlyRent': 12000, 'securityDeposit': 24000, 'totalAmount': 37000 }, 'AC': { 'monthlyRent': 12000, 'acCharge': 5000, 'securityDeposit': 32000, 'totalAmount': 49000 } },
+            'Double Sharing': { 'Non-AC': { 'monthlyRent': 9000, 'securityDeposit': 18000, 'totalAmount': 28000 }, 'AC': { 'monthlyRent': 9000, 'acCharge': 5000, 'securityDeposit': 28000, 'totalAmount': 40000 } },
+            'Triple Sharing': { 'Non-AC': { 'monthlyRent': 8000, 'securityDeposit': 16000, 'totalAmount': 25000 }, 'AC': { 'monthlyRent': 8000, 'acCharge': 5000, 'securityDeposit': 24000, 'totalAmount': 37000 } },
+            'admissionFee': 1000
+        };
+        let selectedRoomType = '', selectedRoomCategory = '', calculatedMonthlyRent = 0, calculatedACCharge = 0, calculatedSecurityDeposit = 0, calculatedTotalAmount = 0;
+        let uploadedPhoto = null, uploadedDocuments = [];
+
+        function calculatePrices() {
+            calculatedMonthlyRent = 0; calculatedACCharge = 0; calculatedSecurityDeposit = 0; calculatedTotalAmount = 0;
+            if (selectedRoomType && selectedRoomCategory) {
+                const roomConfig = priceConfig[selectedRoomType];
+                const isAC = selectedRoomCategory === 'AC';
+                if (roomConfig) {
+                    const config = isAC ? roomConfig['AC'] : roomConfig['Non-AC'];
+                    calculatedMonthlyRent = config.monthlyRent;
+                    calculatedSecurityDeposit = config.securityDeposit;
+                    calculatedTotalAmount = config.totalAmount;
+                    if (isAC && config.acCharge) calculatedACCharge = config.acCharge;
+                }
+            }
+            updatePriceDisplay(); updateSummaryDisplay(); updateFinalDisplay();
+        }
+        function updatePriceDisplay() {
+            if (selectedRoomType && selectedRoomCategory) {
+                const isAC = selectedRoomCategory === 'AC';
+                monthlyRentElement.textContent = `₹${calculatedMonthlyRent.toLocaleString('en-IN')}`;
+                acChargeElement.textContent = isAC ? `₹${calculatedACCharge.toLocaleString('en-IN')}` : '₹0';
+                securityDepositElement.textContent = `₹${calculatedSecurityDeposit.toLocaleString('en-IN')}`;
+                totalAmountElement.textContent = `₹${calculatedTotalAmount.toLocaleString('en-IN')}`;
+                totalAmountElement.classList.add('price-updated'); setTimeout(() => totalAmountElement.classList.remove('price-updated'), 500);
+            } else { monthlyRentElement.textContent = '₹0'; acChargeElement.textContent = '₹0'; securityDepositElement.textContent = '₹0'; totalAmountElement.textContent = '₹0'; }
+        }
+        function updateSummaryDisplay() {
+            summaryRoomTypeElement.textContent = selectedRoomType || 'Not selected';
+            summaryRoomCategoryElement.textContent = selectedRoomCategory || 'Not selected';
+            summaryMonthlyRentElement.textContent = `₹${calculatedMonthlyRent.toLocaleString('en-IN')}`;
+            summaryACChargeElement.textContent = selectedRoomCategory === 'AC' ? `₹${calculatedACCharge.toLocaleString('en-IN')}` : '₹0';
+            summarySecurityDepositElement.textContent = `₹${calculatedSecurityDeposit.toLocaleString('en-IN')}`;
+            summaryTotalAmountElement.textContent = `₹${calculatedTotalAmount.toLocaleString('en-IN')}`;
+        }
+        function updateFinalDisplay() {
+            finalRoomTypeElement.textContent = selectedRoomType ? `${selectedRoomType} (${selectedRoomCategory})` : 'Not selected';
+            finalMonthlyRentElement.textContent = `₹${calculatedMonthlyRent.toLocaleString('en-IN')}`;
+            finalACChargeElement.textContent = selectedRoomCategory === 'AC' ? `₹${calculatedACCharge.toLocaleString('en-IN')}` : '₹0';
+            finalSecurityDepositElement.textContent = `₹${calculatedSecurityDeposit.toLocaleString('en-IN')}`;
+            finalTotalAmountElement.textContent = `₹${calculatedTotalAmount.toLocaleString('en-IN')}`;
+        }
+        function handleRoomOptionSelection() {
+            roomOptions.forEach(option => { option.classList.remove('selected'); const radio = option.querySelector('input[type="radio"]'); if (radio && radio.checked) option.classList.add('selected'); });
+        }
+        document.querySelectorAll('input[name="roomType"]').forEach(radio => radio.addEventListener('change', function() { selectedRoomType = this.value; handleRoomOptionSelection(); calculatePrices(); }));
+        document.querySelectorAll('input[name="roomCategory"]').forEach(radio => radio.addEventListener('change', function() { selectedRoomCategory = this.value; handleRoomOptionSelection(); calculatePrices(); }));
+
+        function updateProgress() {
+            const progressPercentage = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+            steps.forEach((step, index) => {
+                const stepNumber = parseInt(step.getAttribute('data-step'));
+                if (stepNumber < currentStep) { step.classList.remove('active'); step.classList.add('completed'); }
+                else if (stepNumber === currentStep) { step.classList.add('active'); step.classList.remove('completed'); }
+                else { step.classList.remove('active', 'completed'); }
+            });
+            formSteps.forEach((step, index) => { if (index + 1 === currentStep) step.classList.add('active'); else step.classList.remove('active'); });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (currentStep === 7 || currentStep === 8) calculatePrices();
+        }
+        function goToNextStep() { if (currentStep < totalSteps) { currentStep++; updateProgress(); } }
+        function goToPrevStep() { if (currentStep > 1) { currentStep--; updateProgress(); } }
+
+        // Validation step1 (unchanged)
+        function validateStep1() {
+            const fullName = document.getElementById('fullName').value.trim();
+            const fatherName = document.getElementById('fatherName').value.trim();
+            const dob = document.getElementById('dob').value;
+            const gender = document.querySelector('input[name="gender"]:checked');
+            const bloodGroup = document.getElementById('bloodGroup').value;
+            const mobile = document.getElementById('mobile').value.trim();
+            const aadhar = document.getElementById('aadhar').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const address = document.getElementById('permanentAddress').value.trim();
+            const photoFile = photoUpload.files[0];
+            if (!fullName) { alert('Please enter your full name'); return false; }
+            if (!fatherName) { alert("Please enter your father's/mother's name"); return false; }
+            if (!dob) { alert('Please select your date of birth'); return false; }
+            if (!gender) { alert('Please select your gender'); return false; }
+            if (!bloodGroup) { alert('Please select your blood group'); return false; }
+            if (!mobile || !/^[0-9]{10}$/.test(mobile)) { alert('Please enter a valid 10-digit mobile number'); return false; }
+            if (!aadhar || !/^[0-9]{12}$/.test(aadhar)) { alert('Please enter a valid 12-digit Aadhar number'); return false; }
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address'); return false; }
+            if (!address) { alert('Please enter your permanent address'); return false; }
+            if (!photoFile) { alert('Please upload a passport size photo'); return false; }
+            return true;
+        }
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes'; const k = 1024; const sizes = ['Bytes', 'KB', 'MB', 'GB']; const i = Math.floor(Math.log(bytes) / Math.log(k)); return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+        function handlePhotoUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                if (file.size > 5 * 1024 * 1024) { alert('File size should be less than 5MB'); photoUpload.value = ''; return; }
+                const validTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+                if (!validTypes.includes(file.type)) { alert('Only JPEG and PNG files are allowed'); photoUpload.value = ''; return; }
+                photoFileName.textContent = file.name;
+                photoFileSize.textContent = formatFileSize(file.size);
+                photoPreview.classList.add('show');
+                uploadedPhoto = file;
+            } else { photoPreview.classList.remove('show'); uploadedPhoto = null; }
+        }
+        function handleDocumentsUpload(event) {
+            const files = event.target.files;
+            uploadedDocuments = [];
+            if (files.length > 0) {
+                let totalSize = 0; const fileNames = [];
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    if (file.size > 5 * 1024 * 1024) { alert(`File "${file.name}" exceeds 5MB limit.`); documentsUpload.value = ''; return; }
+                    const validTypes = ['.pdf', '.jpg', '.jpeg', '.png'];
+                    const fileExtension = '.' + file.name.split('.').pop().toLowerCase();
+                    if (!validTypes.includes(fileExtension)) { alert(`File "${file.name}" is not a valid type.`); documentsUpload.value = ''; return; }
+                    totalSize += file.size; fileNames.push(file.name); uploadedDocuments.push(file);
+                }
+                documentsFileName.textContent = `${files.length} file(s) selected: ${fileNames.slice(0, 3).join(', ')}${fileNames.length > 3 ? '...' : ''}`;
+                documentsFileSize.textContent = `Total size: ${formatFileSize(totalSize)}`;
+                documentsPreview.classList.add('show');
+            } else { documentsPreview.classList.remove('show'); uploadedDocuments = []; }
+        }
+        function removePhotoFile() { photoUpload.value = ''; photoPreview.classList.remove('show'); uploadedPhoto = null; }
+        function removeDocumentsFiles() { documentsUpload.value = ''; documentsPreview.classList.remove('show'); uploadedDocuments = []; }
+
+        const today = new Date(); const todayFormatted = today.toISOString().split('T')[0];
+        document.getElementById('admissionDate').min = todayFormatted;
+        const tomorrow = new Date(today); tomorrow.setDate(tomorrow.getDate() + 1);
+        document.getElementById('admissionDate').value = tomorrow.toISOString().split('T')[0];
+        document.getElementById('dob').max = todayFormatted;
+
+        // Event listeners for navigation
+        nextStep1Btn.addEventListener('click', () => { if (validateStep1()) goToNextStep(); });
+        if (prevStep2Btn) prevStep2Btn.addEventListener('click', goToPrevStep);
+        if (nextStep2Btn) nextStep2Btn.addEventListener('click', goToNextStep);
+        if (prevStep3Btn) prevStep3Btn.addEventListener('click', goToPrevStep);
+        if (nextStep3Btn) nextStep3Btn.addEventListener('click', goToNextStep);
+        if (prevStep4Btn) prevStep4Btn.addEventListener('click', goToPrevStep);
+        if (nextStep4Btn) nextStep4Btn.addEventListener('click', goToNextStep);
+        if (prevStep5Btn) prevStep5Btn.addEventListener('click', goToPrevStep);
+        if (nextStep5Btn) nextStep5Btn.addEventListener('click', goToNextStep);
+        if (prevStep6Btn) prevStep6Btn.addEventListener('click', goToPrevStep);
+        if (nextStep6Btn) nextStep6Btn.addEventListener('click', goToNextStep);
+        if (prevStep7Btn) prevStep7Btn.addEventListener('click', goToPrevStep);
+        if (nextStep7Btn) nextStep7Btn.addEventListener('click', goToNextStep);
+        if (prevStep8Btn) prevStep8Btn.addEventListener('click', goToPrevStep);
+
+        // File upload handling: just listen to change events
+        if (photoUpload) photoUpload.addEventListener('change', handlePhotoUpload);
+        if (removePhoto) removePhoto.addEventListener('click', removePhotoFile);
+        if (documentsUpload) documentsUpload.addEventListener('change', handleDocumentsUpload);
+        if (removeDocuments) removeDocuments.addEventListener('click', removeDocumentsFiles);
+
+        // ========== WHATSAPP TEXT-ONLY INTEGRATION ==========
+        const WHATSAPP_NUMBER = '918638647969'; // without '+'
+
+        // Generate booking ID
+        function generateBookingId() { 
+            const timestamp = Date.now().toString().slice(-6); 
+            const random = Math.random().toString(36).substr(2, 4).toUpperCase(); 
+            return `BK${timestamp}${random}`; 
+        }
+
+        // Collect form data (file names only for display)
+        function collectFormDataForWhatsApp() {
+            const documentCheckboxes = document.querySelectorAll('input[name="documents"]:checked');
+            const selectedDocuments = Array.from(documentCheckboxes).map(cb => cb.value);
+            const otherDocument = document.getElementById('otherDocument').value;
+            if (otherDocument) selectedDocuments.push(otherDocument);
+
+            // Get file names (not content)
+            const photoFile = photoUpload.files[0];
+            const photoName = photoFile ? photoFile.name : null;
+            const docFiles = documentsUpload.files;
+            const docNames = [];
+            for (let i = 0; i < docFiles.length; i++) {
+                docNames.push(docFiles[i].name);
+            }
+
+            return {
+                fullName: document.getElementById('fullName').value.trim(),
+                fatherName: document.getElementById('fatherName').value.trim(),
+                dob: document.getElementById('dob').value,
+                gender: document.querySelector('input[name="gender"]:checked')?.value,
+                bloodGroup: document.getElementById('bloodGroup').value,
+                mobile: document.getElementById('mobile').value.trim(),
+                aadhar: document.getElementById('aadhar').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                permanentAddress: document.getElementById('permanentAddress').value.trim(),
+                occupation: document.getElementById('occupation').value,
+                institutionName: document.getElementById('institutionName').value.trim(),
+                idNumber: document.getElementById('idNumber').value.trim(),
+                officeAddress: document.getElementById('officeAddress').value.trim(),
+                collegeDepartment: document.getElementById('collegeDepartment').value.trim(),
+                emergencyName: document.getElementById('emergencyName').value.trim(),
+                relationship: document.getElementById('relationship').value.trim(),
+                emergencyContact: document.getElementById('emergencyContact').value.trim(),
+                emergencyAddress: document.getElementById('emergencyAddress').value.trim(),
+                emergencyAadhar: document.getElementById('emergencyAadhar').value.trim(),
+                roomType: selectedRoomType,
+                roomCategory: selectedRoomCategory,
+                admissionDate: document.getElementById('admissionDate').value,
+                monthlyRent: calculatedMonthlyRent,
+                acCharge: calculatedACCharge,
+                admissionFee: 1000,
+                securityDeposit: calculatedSecurityDeposit,
+                totalAmount: calculatedTotalAmount,
+                documents: selectedDocuments,
+                photoFileName: photoName,
+                documentFileNames: docNames,
+            };
+        }
+
+        // Build WhatsApp message text with the required note about sharing documents separately
+        function buildWhatsAppMessage(data, bookingId) {
+            // List selected documents for reference
+            const docsList = (data.documents || []).join(', ') || 'None';
+            const photoStatus = data.photoFileName ? `Yes (${data.photoFileName})` : 'No';
+            const otherDocsStatus = data.documentFileNames.length > 0 ? data.documentFileNames.join(', ') : 'None';
+
+            return `🏠 *SHINE BOYS' PG - Booking Details* 🏠
+────────────────
+🆔 *Booking ID:* ${bookingId}
+👤 *Name:* ${data.fullName || '-'}
+👨‍👦 *Parent:* ${data.fatherName || '-'}
+📅 *DOB:* ${data.dob || '-'}
+🩸 *Blood Group:* ${data.bloodGroup || '-'}
+📞 *Mobile:* ${data.mobile || '-'}
+📧 *Email:* ${data.email || '-'}
+🆔 *Aadhar:* ${data.aadhar || '-'}
+🏡 *Address:* ${data.permanentAddress || '-'}
+
+🎓 *Occupation:* ${data.occupation || '-'}
+🏢 *Inst/Company:* ${data.institutionName || '-'}
+🆔 *ID No.:* ${data.idNumber || '-'}
+📍 *Office/College Addr:* ${data.officeAddress || '-'}
+📚 *Department:* ${data.collegeDepartment || '-'}
+
+🚨 *Emergency Contact*
+   Name: ${data.emergencyName || '-'}
+   Relation: ${data.relationship || '-'}
+   Phone: ${data.emergencyContact || '-'}
+   Address: ${data.emergencyAddress || '-'}
+   Aadhar (opt): ${data.emergencyAadhar || '-'}
+
+🛏️ *Room:* ${data.roomType || '-'} (${data.roomCategory || '-'})
+📆 *Admission Date:* ${data.admissionDate || '-'}
+💰 *Monthly Rent:* ₹${data.monthlyRent?.toLocaleString('en-IN') || 0}
+❄️ *A/C Charge:* ₹${data.acCharge?.toLocaleString('en-IN') || 0}
+💵 *Admission Fee:* ₹1,000
+🔒 *Security Deposit:* ₹${data.securityDeposit?.toLocaleString('en-IN') || 0}
+💎 *Total Amount:* ₹${data.totalAmount?.toLocaleString('en-IN') || 0}
+
+📎 *Documents selected:* ${docsList}
+📸 *Photo uploaded:* ${photoStatus}
+📁 *Additional files:* ${otherDocsStatus}
+
+────────────────
+📌 *Note:* I'll share my passport size photo and other documents as needed.  
+_This message was sent automatically from the booking form._`;
+        }
+
+        // Open WhatsApp with text only
+        function sendToWhatsAppTextOnly(message) {
+            const encoded = encodeURIComponent(message);
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
+            window.open(url, '_blank');
+        }
+
+        // ---------- SUBMIT BUTTON (text-only WhatsApp) ----------
+        let lastBookingId = null;
+        let lastFormData = null;
+
+        if (submitFormBtn) {
+            submitFormBtn.addEventListener('click', () => {
+                const declarationCheck = document.getElementById('declarationCheck');
+                if (!declarationCheck.checked) { alert('Please agree to the declaration to submit the form.'); return; }
+                if (!selectedRoomType || !selectedRoomCategory) { alert('Please select your room type and category in Step 4.'); currentStep = 4; updateProgress(); return; }
+
+                // Disable button and show loading
+                submitFormBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitFormBtn.disabled = true;
+
+                try {
+                    // Collect data and generate booking ID
+                    const formData = collectFormDataForWhatsApp();
+                    const bookingId = generateBookingId();
+
+                    // Store for potential resend via WhatsApp button
+                    lastBookingId = bookingId;
+                    lastFormData = formData;
+
+                    // Build message
+                    const message = buildWhatsAppMessage(formData, bookingId);
+
+                    // Open WhatsApp with text only (no file sharing)
+                    sendToWhatsAppTextOnly(message);
+
+                    // Show success message in form
+                    successMessage.style.display = 'block';
+                    bookingIdDisplay.textContent = bookingId;
+                    submitFormBtn.style.display = 'none'; // hide submit button
+                    prevStep8Btn.style.display = 'none';  // hide previous button
+
+                    // Optional: scroll to success
+                    successMessage.scrollIntoView({ behavior: 'smooth' });
+
+                } catch (error) {
+                    alert('Error preparing booking. Please try again.');
+                    console.error(error);
+                    submitFormBtn.innerHTML = 'Submit Booking';
+                    submitFormBtn.disabled = false;
+                }
+            });
+        }
+
+        // WhatsApp button inside success message (text-only resend)
+        const whatsappBtn = document.getElementById('whatsappShareBtn');
+        if (whatsappBtn) {
+            whatsappBtn.addEventListener('click', () => {
+                if (lastBookingId && lastFormData) {
+                    const message = buildWhatsAppMessage(lastFormData, lastBookingId);
+                    sendToWhatsAppTextOnly(message);
+                } else {
+                    alert('No booking data available. Please submit the form first.');
+                }
+            });
+        }
+
+        // Auto-save draft (unchanged)
+        setInterval(() => {
+            if (currentStep > 1) {
+                const formData = {
+                    step: currentStep,
+                    fullName: document.getElementById('fullName')?.value || '',
+                    roomType: selectedRoomType,
+                    roomCategory: selectedRoomCategory,
+                    lastSaved: new Date().toISOString()
+                };
+                localStorage.setItem('bookingDraft', JSON.stringify(formData));
+            }
+        }, 30000);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const draft = JSON.parse(localStorage.getItem('bookingDraft'));
+            if (draft) {
+                if (draft.fullName && document.getElementById('fullName')) document.getElementById('fullName').value = draft.fullName;
+                if (draft.roomType && draft.roomCategory) {
+                    selectedRoomType = draft.roomType; selectedRoomCategory = draft.roomCategory;
+                    const roomTypeRadio = document.querySelector(`input[name="roomType"][value="${draft.roomType}"]`);
+                    const roomCategoryRadio = document.querySelector(`input[name="roomCategory"][value="${draft.roomCategory}"]`);
+                    if (roomTypeRadio) roomTypeRadio.checked = true;
+                    if (roomCategoryRadio) roomCategoryRadio.checked = true;
+                    handleRoomOptionSelection(); calculatePrices();
+                }
+                console.log('Draft loaded from:', new Date(draft.lastSaved).toLocaleString());
+            }
+        });
+
+        window.addEventListener('beforeunload', () => { localStorage.removeItem('bookingDraft'); });
+
+        // Initialize
+        updateProgress();
+        handleRoomOptionSelection();
+    </script>
+</body>
+</html>
+// --- ADD BACKEND SUBMISSION ---
+try {
+  const backendFormData = new FormData();
+  backendFormData.append('name', document.getElementById('fullName').value.trim());
+  backendFormData.append('phone', document.getElementById('mobile').value.trim());
+  backendFormData.append('room', `${selectedRoomType} (${selectedRoomCategory})`);
+  if (photoUpload.files[0]) backendFormData.append('photo', photoUpload.files[0]);
+  if (documentsUpload.files[0]) backendFormData.append('document', documentsUpload.files[0]);
+  // store all form data as JSON for reference
+  const allData = collectFormDataForWhatsApp();
+  backendFormData.append('fullData', JSON.stringify(allData));
+  
+  const backendRes = await fetch('/api/bookings', { method: 'POST', body: backendFormData });
+  if (!backendRes.ok) throw new Error('Backend save failed');
+  console.log('Booking saved to database');
+} catch (err) {
+  console.error('Backend error:', err);
+  alert('Booking saved to WhatsApp but could not save to server. Please contact admin.');
+}
